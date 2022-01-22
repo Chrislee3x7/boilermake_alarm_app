@@ -14,43 +14,40 @@
         android:columnCount="2"
         android:padding="4dp"
         android:rowCount="2"
+        android:layout_margin="20dp"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <Button
+        <ImageView
             android:id="@+id/top_left_wedge"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_margin="1dp"
             app:backgroundTint="@null"
-            android:background="@drawable/wedge_top_left" />
+            android:background="@drawable/ic_newclockfacetopleft"/>
 
-        <Button
+        <ImageView
             android:id="@+id/top_right_wedge"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_margin="1dp"
             app:backgroundTint="@null"
-            android:background="@drawable/wedge_top_left" />
+            android:background="@drawable/ic_newclockfacetopright"/>
 
-        <Button
+        <ImageView
             android:id="@+id/bottom_left_wedge"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_margin="1dp"
             app:backgroundTint="@null"
-            android:background="@drawable/wedge_top_left" />
+            android:background="@drawable/ic_newclockfacebottomleft"/>
 
-        <Button
+        <ImageView
             android:id="@+id/bottom_right_wedge"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_margin="1dp"
             app:backgroundTint="@null"
-            android:background="@drawable/wedge_top_left" />
+            android:background="@drawable/ic_newclockfacebottomright" />
 
     </GridLayout>
 
