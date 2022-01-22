@@ -3,8 +3,13 @@ package com.example.physicalalarm;
 import androidx.dynamicanimation.animation.DynamicAnimation;
 import androidx.dynamicanimation.animation.SpringAnimation;
 import androidx.dynamicanimation.animation.SpringForce;
+import android.app.Fragment;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -19,10 +24,13 @@ public class MainActivity extends Activity {
     private View clockFace;
     private View clockTicksAndNumbers;
     private AtomicBoolean zoomAnimEnded;
-    private boolean 
 
     float y1 = 0;
     float y2 = 0;
+
+    //Fragment vars
+    private FragmentTransaction fragmentTransaction;
+    private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,24 +149,32 @@ public class MainActivity extends Activity {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         final int MIN_DISTANCE = 200;
-        switch(event.getAction()) {
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 y1 = event.getY();
                 break;
             case MotionEvent.ACTION_UP:
                 y2 = event.getY();
                 float deltaY = y1 - y2;
-                if (deltaY > MIN_DISTANCE)
-                {
+                if (deltaY > MIN_DISTANCE) {
                     Toast.makeText(getApplicationContext(), "swipe up", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
+                } else {
                     // consider as something else - a screen tap for example
                 }
                 break;
         }
         return super.onTouchEvent(event);
+    }
+
+    //Changing fragments (might want to delete later)
+    public void handleChangeFragment(View view) {
+        if(view == findViewById(R.id.button1)) {
+            Fragment selectedFragment = new RingingScreenFragment();
+            fragmentManager = getFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment, selectedFragment);
+            fragmentTransaction.commit();
+        }
     }
 
     private void animateZoomIn() {
