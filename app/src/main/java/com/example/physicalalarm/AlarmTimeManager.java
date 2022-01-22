@@ -19,6 +19,50 @@ public class AlarmTimeManager {
         return alarmTimes;
     }
 
+    public ArrayList<AlarmTime> getAlarmTimes12to3() {
+        ArrayList<AlarmTime> newArray = new ArrayList<AlarmTime>();
+        for(AlarmTime a : alarmTimes){
+            if((a.getHour() >= 12 && a.getHour() <= 14) || (a.getHour() >= 0 && a.getHour() <= 2)){
+                newArray.add(a);
+            }
+        }
+        quickSort(newArray, 0, newArray.size()-1);
+        return newArray;
+    }
+
+    public ArrayList<AlarmTime> getAlarmTimes3to6() {
+        ArrayList<AlarmTime> newArray = new ArrayList<AlarmTime>();
+        for(AlarmTime a : alarmTimes){
+            if((a.getHour() >= 15 && a.getHour() <= 17) || (a.getHour() >= 3 && a.getHour() <= 5)){
+                newArray.add(a);
+            }
+        }
+        quickSort(newArray, 0, newArray.size()-1);
+        return newArray;
+    }
+
+    public ArrayList<AlarmTime> getAlarmTimes6to9() {
+        ArrayList<AlarmTime> newArray = new ArrayList<AlarmTime>();
+        for(AlarmTime a : alarmTimes){
+            if((a.getHour() >= 18 && a.getHour() <= 20) || (a.getHour() >= 6 && a.getHour() <= 8)){
+                newArray.add(a);
+            }
+        }
+        quickSort(newArray, 0, newArray.size()-1);
+        return newArray;
+    }
+
+    public ArrayList<AlarmTime> getAlarmTimes9to12() {
+        ArrayList<AlarmTime> newArray = new ArrayList<AlarmTime>();
+        for(AlarmTime a : alarmTimes){
+            if((a.getHour() >= 21 && a.getHour() <= 23) || (a.getHour() >= 9 && a.getHour() <= 11)){
+                newArray.add(a);
+            }
+        }
+        quickSort(newArray, 0, newArray.size()-1);
+        return newArray;
+    }
+
     public void sortAlarmTimes(){
         quickSort(alarmTimes, 0, alarmTimes.size()-1);
     }
