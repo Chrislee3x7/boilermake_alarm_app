@@ -3,8 +3,12 @@ package com.example.physicalalarm;
 import androidx.dynamicanimation.animation.DynamicAnimation;
 import androidx.dynamicanimation.animation.SpringAnimation;
 import androidx.dynamicanimation.animation.SpringForce;
+import android.app.Fragment;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +21,10 @@ public class MainActivity extends Activity {
     private View clockFace;
     private View clockTicksAndNumbers;
 
+    //Fragment vars
+    private FragmentTransaction fragmentTransaction;
+    private FragmentManager fragmentManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +34,6 @@ public class MainActivity extends Activity {
         ImageView topRightWedge = findViewById(R.id.top_right_wedge);
         ImageView bottomLeftWedge = findViewById(R.id.bottom_left_wedge);
         ImageView bottomRightWedge = findViewById(R.id.bottom_right_wedge);
-
 
 
         topLeftWedge.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +74,17 @@ public class MainActivity extends Activity {
                 Toast.makeText(getApplicationContext(), "3-6 quadrant pressed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    //Changing fragments (might want to delete later)
+    public void handleChangeFragment(View view) {
+        if(view == findViewById(R.id.button1)) {
+            Fragment selectedFragment = new RingingScreenFragment();
+            fragmentManager = getFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment, selectedFragment);
+            fragmentTransaction.commit();
+        }
     }
 
     private void animateZoomIn() {
