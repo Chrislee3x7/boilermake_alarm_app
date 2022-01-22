@@ -25,6 +25,8 @@ public class MainActivity extends Activity {
     private FragmentTransaction fragmentTransaction;
     private FragmentManager fragmentManager;
 
+    private Button goToScreen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,14 @@ public class MainActivity extends Activity {
         ImageView topRightWedge = findViewById(R.id.top_right_wedge);
         ImageView bottomLeftWedge = findViewById(R.id.bottom_left_wedge);
         ImageView bottomRightWedge = findViewById(R.id.bottom_right_wedge);
+        goToScreen = findViewById(R.id.button1);
+
+        goToScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleChangeFragment(view);
+            }
+        });
 
 
         topLeftWedge.setOnClickListener(new View.OnClickListener() {
@@ -78,13 +88,12 @@ public class MainActivity extends Activity {
 
     //Changing fragments (might want to delete later)
     public void handleChangeFragment(View view) {
-        if(view == findViewById(R.id.button1)) {
-            Fragment selectedFragment = new RingingScreenFragment();
-            fragmentManager = getFragmentManager();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment, selectedFragment);
-            fragmentTransaction.commit();
-        }
+        Fragment selectedFragment = new RingingScreenFragment();
+        fragmentManager = getFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.main, selectedFragment);
+        goToScreen.setVisibility(View.GONE);
+        fragmentTransaction.commit();
     }
 
     private void animateZoomIn() {
