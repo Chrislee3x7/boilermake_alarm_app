@@ -35,7 +35,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             app:backgroundTint="@null"
-            android:background="@drawable/ic_newclockfacetopleft"/>
+            android:background="@drawable/ic_newclockfacetopleft" />
 
         <ImageView
             android:id="@+id/top_right_wedge"
@@ -61,6 +61,7 @@
     </GridLayout>
 
     <ImageView
+        android:id="@+id/clock_ticks_numbers"
         android:layout_height="0dp"
         android:layout_width="match_parent"
         android:src="@drawable/ic_newclockface"
