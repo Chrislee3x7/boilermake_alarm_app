@@ -34,16 +34,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 final SpringAnimation rotate = new SpringAnimation(clockFace,
                         DynamicAnimation.ROTATION);
-                final SpringAnimation panDownAnimY  = new SpringAnimation(clockFace, DynamicAnimation.TRANSLATION_Y);
                 SpringForce springForce = new SpringForce();
-                panDownAnimY.setSpring(springForce);
-                panDownAnimY.addEndListener(new DynamicAnimation.OnAnimationEndListener() {
-                    @Override
-                    public void onAnimationEnd(DynamicAnimation animation, boolean canceled, float value, float velocity) {
-//                        animateZoomIn();
-
-                    }
-                });
                 springForce.setStiffness(100f);
                 springForce.setDampingRatio(1);
                 rotate.setSpring(springForce);
@@ -51,7 +42,7 @@ public class MainActivity extends Activity {
                     @Override
                     public void onAnimationEnd(DynamicAnimation animation, boolean canceled, float value, float velocity) {
                         animateZoomIn();
-                        panDownAnimY.animateToFinalPosition(1500f);
+                        animatePanDown();
                     }
                 });
                 rotate.animateToFinalPosition(45f);
@@ -82,10 +73,18 @@ public class MainActivity extends Activity {
         final SpringAnimation zoomToTopAnimX = new SpringAnimation(clockFace, DynamicAnimation.SCALE_X);
         final SpringAnimation zoomToTopAnimY = new SpringAnimation(clockFace, DynamicAnimation.SCALE_Y);
         SpringForce springForce = new SpringForce();
-        springForce.setStiffness(100f);
+        springForce.setStiffness(50f);
         springForce.setDampingRatio(1);
         zoomToTopAnimY.animateToFinalPosition(4f);
         zoomToTopAnimX.animateToFinalPosition(4f);
+    }
+
+    private void animatePanDown() {
+        final SpringAnimation panDownAnimY  = new SpringAnimation(clockFace, DynamicAnimation.TRANSLATION_Y);
+        SpringForce springForce = new SpringForce();
+        springForce.setStiffness(100f);
+        springForce.setDampingRatio(1);
+        panDownAnimY.setSpring(springForce);
     }
 
     @Override

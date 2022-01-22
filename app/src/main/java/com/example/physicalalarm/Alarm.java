@@ -13,7 +13,7 @@ public class Alarm {
 
     private final int hour;
     private final int minute;
-    private boolean started
+    private boolean started;
     private final String title;
 
     public Alarm(int alarmId, int hour, int minute, String title, boolean started) {
