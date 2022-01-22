@@ -7,14 +7,15 @@
     tools:context=".MainActivity">
 
     <GridLayout
+        android:id="@+id/clock_wedges"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_centerHorizontal="true"
         android:background="@color/transparent"
         android:columnCount="2"
-        android:padding="4dp"
         android:rowCount="2"
-        android:layout_margin="20dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginHorizontal="20dp"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -51,6 +52,16 @@
 
     </GridLayout>
 
+    <ImageView
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        android:background="@drawable/ic_newclockface"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toTopOf="@id/clock_wedges"
+        app:layout_constraintLeft_toLeftOf="@id/clock_wedges"
+        app:layout_constraintRight_toRightOf="@id/clock_wedges"
+        app:layout_constraintBottom_toBottomOf="@id/clock_wedges"/>
 
 
 
