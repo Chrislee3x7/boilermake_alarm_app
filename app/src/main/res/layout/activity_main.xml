@@ -32,7 +32,6 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
             <ImageView
                 android:id="@+id/top_left_wedge"
                 android:layout_rowWeight="1"
@@ -65,13 +64,15 @@
         </GridLayout>
 
         <ImageView
-            android:layout_width="match_parent"
+            android:id="@+id/clock_ticks_numbers"
             android:layout_height="0dp"
+            android:layout_width="match_parent"
             android:src="@drawable/ic_newclockface"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
