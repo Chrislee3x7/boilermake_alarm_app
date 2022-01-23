@@ -8,13 +8,15 @@ import android.app.Fragment;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -25,13 +27,16 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class MainActivity extends Activity {
 
     private View clockFace;
-    private View clockTicksAndNumbers;
+    private View clockPartsGroup;
     private View minuteHand;
     private View hourHand;
     private View addAlarmButton;
 
     private AtomicBoolean zoomAnimEnded;
     private boolean clockExpanded;
+
+    private Animation fadeIn;
+    private Animation fadeOut;
 
     float y1 = 0;
     float y2 = 0;
@@ -50,10 +55,12 @@ public class MainActivity extends Activity {
         clockExpanded = false;
 
         clockFace = findViewById(R.id.clock_face);
-        clockTicksAndNumbers = findViewById(R.id.clock_ticks_numbers);
+        clockPartsGroup = findViewById(R.id.clock_parts);
+        // view group to fade out when zooming in
+
         hourHand = findViewById(R.id.hour_hand);
         minuteHand = findViewById(R.id.minute_hand);
-        addAlarmButton = findViewById(R.id.add_alarm_button);
+        addAlarmButton = findViewById(R.id.add_alarm_button); 
 
         clockFace.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -86,6 +93,14 @@ public class MainActivity extends Activity {
 
             }
         });
+
+        fadeIn = new AlphaAnimation(0, 1);
+        fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
+        fadeIn.setDuration(1000);
+        fadeOut = new AlphaAnimation(1, 0);
+        fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
+        fadeOut.setDuration(500);
+
         ImageView topLeftWedge = findViewById(R.id.top_left_wedge);
         ImageView topRightWedge = findViewById(R.id.top_right_wedge);
         ImageView bottomLeftWedge = findViewById(R.id.bottom_left_wedge);
@@ -129,6 +144,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 final SpringAnimation rotate = new SpringAnimation(clockFace,
                         DynamicAnimation.ROTATION);
+
                 SpringForce springForce = new SpringForce();
                 springForce.setStiffness(100f);
                 springForce.setDampingRatio(1);
@@ -210,8 +226,8 @@ public class MainActivity extends Activity {
                 float hour = calendar.get(Calendar.HOUR);
                 float minute = calendar.get(Calendar.MINUTE);
 
-                float hourAngle = (hour / 12) * 360 - 90;
-                float minuteAngle = (minute / 60) * 360 - 90;
+                float hourAngle = ((hour / 12) * 360) % 360 - 90;
+                float minuteAngle = ((minute / 60) * 360) % 360 - 90;
 
                 rotateHourHand.animateToFinalPosition(hourAngle);
                 rotateMinuteHand.animateToFinalPosition(minuteAngle);
@@ -234,7 +250,12 @@ public class MainActivity extends Activity {
 
     private void animateZoomOut() {
         zoomAnimEnded.set(false);
-        clockTicksAndNumbers.setVisibility(View.VISIBLE);
+
+        clockPartsGroup.startAnimation(fadeIn);
+        addAlarmButton.startAnimation(fadeIn);
+        clockPartsGroup.setVisibility(View.VISIBLE);
+        addAlarmButton.setVisibility(View.VISIBLE);
+
         final SpringAnimation zoomToTopAnimX = new SpringAnimation(clockFace, DynamicAnimation.SCALE_X);
         final SpringAnimation zoomToTopAnimY = new SpringAnimation(clockFace, DynamicAnimation.SCALE_Y);
         SpringForce springForce = new SpringForce();
@@ -252,7 +273,10 @@ public class MainActivity extends Activity {
 
     private void animateZoomIn() {
         zoomAnimEnded.set(false);
-        clockTicksAndNumbers.setVisibility(View.GONE);
+        clockPartsGroup.startAnimation(fadeOut);
+        addAlarmButton.startAnimation(fadeIn);
+        clockPartsGroup.setVisibility(View.GONE);
+        addAlarmButton.setVisibility(View.GONE);
         final SpringAnimation zoomToTopAnimX = new SpringAnimation(clockFace, DynamicAnimation.SCALE_X);
         final SpringAnimation zoomToTopAnimY = new SpringAnimation(clockFace, DynamicAnimation.SCALE_Y);
         SpringForce springForce = new SpringForce();
