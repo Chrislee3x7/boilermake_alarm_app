@@ -354,12 +354,12 @@ public class MainActivity extends Activity {
         }
     }
 
-    private void loadInAlarmIndicators(){
+    private void loadInAlarmIndicators() {
         ArrayList<AlarmTime> alarmTimes = alarmTimeManager.getAlarmTimes();
 
 
         int index = 0;
-        for(AlarmTime a : alarmTimes){
+        for (AlarmTime a : alarmTimes) {
 
             ConstraintLayout parentLayout = (ConstraintLayout) findViewById(R.id.clock_parts);
             ConstraintSet set = new ConstraintSet();
@@ -377,9 +377,10 @@ public class MainActivity extends Activity {
             float hour = a.getHour();
             float minute = a.getMinute();
 
-            float angle = (((hour%12)*60+minute)/720 * 360) % 360 - 90;
+            float angle = (((hour % 12) * 60 + minute) / 720 * 360) % 360 - 90;
             iv.setRotation(angle);
         }
+    }
     public static AlarmTime getSelectedTime(){
         return selectedTime;
     }
