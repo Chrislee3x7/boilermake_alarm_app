@@ -135,6 +135,7 @@ public class AlarmTimeManager {
      */
     public void addAlarmTime(AlarmTime a){
         alarmTimes.add(a);
+        updateAlarmTimesFile();
     }
 
     /**
@@ -143,6 +144,7 @@ public class AlarmTimeManager {
      */
     public void removeAlarmTime(AlarmTime a){
         alarmTimes.remove(a);
+        updateAlarmTimesFile();
     }
 
     /**
