@@ -15,13 +15,551 @@
         android:layout_marginBottom="-1dp">
 
         <com.example.physicalalarm.BouncingImageView
-            android:id="@+id/bouncingImageView13"
+            android:id="@+id/bouncingImageView88"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="273dp"
+            android:layout_marginBottom="447dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView60"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="303dp"
+            android:layout_marginBottom="399dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView61"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="294dp"
+            android:layout_marginBottom="264dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView62"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="117dp"
+            android:layout_marginBottom="675dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView63"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="128dp"
+            android:layout_marginBottom="11dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView64"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="3dp"
+            android:layout_marginBottom="177dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView65"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="251dp"
+            android:layout_marginBottom="648dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView66"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="559dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView67"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="17dp"
+            android:layout_marginBottom="125dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView68"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="-1dp"
+            android:layout_marginBottom="481dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView69"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="220dp"
+            android:layout_marginBottom="53dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView70"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="337dp"
+            android:layout_marginBottom="221dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView71"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="182dp"
+            android:layout_marginBottom="694dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView72"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="193dp"
-            android:layout_marginBottom="693dp"
+            android:layout_marginBottom="30dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView73"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="243dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView74"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="318dp"
+            android:layout_marginBottom="618dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView75"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="57dp"
+            android:layout_marginBottom="611dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView76"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="327dp"
+            android:layout_marginBottom="447dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView77"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="285dp"
+            android:layout_marginBottom="72dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView78"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="35dp"
+            android:layout_marginBottom="69dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView79"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="435dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView80"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="310dp"
+            android:layout_marginBottom="663dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView81"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="519dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView82"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="330dp"
+            android:layout_marginBottom="539dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView83"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="242dp"
+            android:layout_marginBottom="598dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView84"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="39dp"
+            android:layout_marginBottom="652dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView85"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="-7dp"
+            android:layout_marginBottom="321dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView86"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="205dp"
+            android:layout_marginBottom="84dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView87"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="66dp"
+            android:layout_marginBottom="469dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView90"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="87dp"
+            android:layout_marginBottom="100dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView91"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="338dp"
+            android:layout_marginBottom="140dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView92"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="350dp"
+            android:layout_marginBottom="358dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView93"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="348dp"
+            android:layout_marginBottom="650dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView94"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="96dp"
+            android:layout_marginBottom="578dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView95"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="377dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView96"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="299dp"
+            android:layout_marginBottom="12dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView97"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="677dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView89"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="78dp"
+            android:layout_marginBottom="8dp"
+            android:rotation="-121"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView29"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="333dp"
+            android:layout_marginBottom="418dp"
+            android:rotation="-297"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="324dp"
+            android:layout_marginBottom="283dp"
+            android:rotation="25"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="147dp"
+            android:layout_marginBottom="694dp"
+            android:rotation="-134"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView25"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="158dp"
+            android:layout_marginBottom="30dp"
+            android:rotation="46"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView26"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="33dp"
+            android:layout_marginBottom="196dp"
+            android:rotation="159"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView27"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="281dp"
+            android:layout_marginBottom="667dp"
+            android:rotation="-155"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView28"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="55dp"
+            android:layout_marginBottom="578dp"
+            android:rotation="289"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView31"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="47dp"
+            android:layout_marginBottom="144dp"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView32"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="29dp"
+            android:layout_marginBottom="500dp"
+            android:rotation="-176"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView30"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="250dp"
+            android:layout_marginBottom="72dp"
+            android:rotation="264"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView7"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="367dp"
+            android:layout_marginBottom="240dp"
+            android:rotation="-155"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView13"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="212dp"
+            android:layout_marginBottom="713dp"
             android:rotation="-301"
             android:src="@drawable/ic_triangle" />
 
@@ -31,8 +569,8 @@
             android:layout_height="20dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="204dp"
-            android:layout_marginBottom="29dp"
+            android:layout_marginEnd="223dp"
+            android:layout_marginBottom="49dp"
             android:rotation="-188"
             android:src="@drawable/ic_triangle" />
 
@@ -42,8 +580,8 @@
             android:layout_height="20dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="39dp"
-            android:layout_marginBottom="242dp"
+            android:layout_marginEnd="58dp"
+            android:layout_marginBottom="262dp"
             android:rotation="343"
             android:src="@drawable/ic_triangle" />
 
@@ -53,8 +591,8 @@
             android:layout_height="20dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="329dp"
-            android:layout_marginBottom="617dp"
+            android:layout_marginEnd="348dp"
+            android:layout_marginBottom="637dp"
             android:rotation="-213"
             android:src="@drawable/ic_triangle" />
 
@@ -64,9 +602,9 @@
             android:layout_height="20dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="68dp"
-            android:layout_marginBottom="610dp"
-            android:rotation="289"
+            android:layout_marginEnd="87dp"
+            android:layout_marginBottom="630dp"
+            android:rotation="71"
             android:src="@drawable/ic_triangle" />
 
         <com.example.physicalalarm.BouncingImageView
@@ -75,31 +613,9 @@
             android:layout_height="20dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="338dp"
-            android:layout_marginBottom="446dp"
+            android:layout_marginEnd="357dp"
+            android:layout_marginBottom="466dp"
             android:rotation="-213"
-            android:src="@drawable/ic_triangle" />
-
-        <com.example.physicalalarm.BouncingImageView
-            android:id="@+id/bouncingImageView7"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="348dp"
-            android:layout_marginBottom="220dp"
-            android:rotation="-155"
-            android:src="@drawable/ic_triangle" />
-
-        <com.example.physicalalarm.BouncingImageView
-            android:id="@+id/bouncingImageView6"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="59dp"
-            android:layout_marginBottom="434dp"
-            android:rotation="-176"
             android:src="@drawable/ic_triangle" />
 
         <com.example.physicalalarm.BouncingImageView
@@ -108,8 +624,8 @@
             android:layout_height="20dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="296dp"
-            android:layout_marginBottom="71dp"
+            android:layout_marginEnd="315dp"
+            android:layout_marginBottom="91dp"
             android:rotation="184"
             android:src="@drawable/ic_triangle" />
 
@@ -119,9 +635,215 @@
             android:layout_height="20dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="46dp"
-            android:layout_marginBottom="68dp"
+            android:layout_marginEnd="65dp"
+            android:layout_marginBottom="88dp"
+            android:rotation="142"
             android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView6"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="78dp"
+            android:layout_marginBottom="454dp"
+            android:rotation="-176"
+            android:src="@drawable/ic_triangle" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView33"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="340dp"
+            android:layout_marginBottom="682dp"
+            android:rotation="113"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView34"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="31dp"
+            android:layout_marginBottom="538dp"
+            android:rotation="-151"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView35"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="360dp"
+            android:layout_marginBottom="558dp"
+            android:rotation="105"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView36"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="272dp"
+            android:layout_marginBottom="617dp"
+            android:rotation="197"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView37"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="69dp"
+            android:layout_marginBottom="671dp"
+            android:rotation="-264"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView38"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="23dp"
+            android:layout_marginBottom="340dp"
+            android:rotation="347"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView39"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="235dp"
+            android:layout_marginBottom="103dp"
+            android:rotation="176"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView40"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="96dp"
+            android:layout_marginBottom="488dp"
+            android:rotation="67"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView41"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="303dp"
+            android:layout_marginBottom="466dp"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView42"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="108dp"
+            android:layout_marginBottom="27dp"
+            android:rotation="-180"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView43"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="117dp"
+            android:layout_marginBottom="119dp"
+            android:rotation="67"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView53"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="368dp"
+            android:layout_marginBottom="159dp"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView54"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="380dp"
+            android:layout_marginBottom="377dp"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView55"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="378dp"
+            android:layout_marginBottom="669dp"
+            android:rotation="-234"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView56"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="126dp"
+            android:layout_marginBottom="597dp"
+            android:rotation="147"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView57"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="396dp"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView58"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="329dp"
+            android:layout_marginBottom="31dp"
+            android:rotation="280"
+            android:src="@drawable/ic_hex" />
+
+        <com.example.physicalalarm.BouncingImageView
+            android:id="@+id/bouncingImageView59"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="696dp"
+            android:rotation="-134"
+            android:src="@drawable/ic_hex" />
 
     </RelativeLayout>
 
