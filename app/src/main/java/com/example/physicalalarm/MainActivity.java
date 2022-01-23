@@ -18,9 +18,11 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -31,6 +33,7 @@ public class MainActivity extends Activity {
     private View minuteHand;
     private View hourHand;
     private View addAlarmButton;
+    private GridLayout displayedAlarms;
 
     private AtomicBoolean zoomAnimEnded;
     private boolean clockExpanded;
@@ -47,6 +50,8 @@ public class MainActivity extends Activity {
 
     private Button goToScreen;
 
+    private AlarmTimeManager alarmTimeManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +66,14 @@ public class MainActivity extends Activity {
         hourHand = findViewById(R.id.hour_hand);
         minuteHand = findViewById(R.id.minute_hand);
         addAlarmButton = findViewById(R.id.add_alarm_button); 
+        displayedAlarms = findViewById(R.id.displayed_alarms);
+
+        alarmTimeManager = new AlarmTimeManager(getApplicationContext());
+        alarmTimeManager.addAlarmTime(new AlarmTime(22, 20, false));
+        alarmTimeManager.addAlarmTime(new AlarmTime(22, 10, false));
+        alarmTimeManager.addAlarmTime(new AlarmTime(22, 30, false));
+        alarmTimeManager.addAlarmTime(new AlarmTime(22, 40, false));
+
 
         clockFace.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -120,6 +133,8 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 final SpringAnimation rotate = new SpringAnimation(clockFace,
                         DynamicAnimation.ROTATION);
+                ArrayList<AlarmTime> alarmTimes = loadInAlarms(3);
+
                 SpringForce springForce = new SpringForce();
                 springForce.setStiffness(100f);
                 springForce.setDampingRatio(1);
@@ -144,7 +159,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 final SpringAnimation rotate = new SpringAnimation(clockFace,
                         DynamicAnimation.ROTATION);
-
+                loadInAlarms(0);
                 SpringForce springForce = new SpringForce();
                 springForce.setStiffness(100f);
                 springForce.setDampingRatio(1);
@@ -169,6 +184,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 final SpringAnimation rotate = new SpringAnimation(clockFace,
                         DynamicAnimation.ROTATION);
+                loadInAlarms(2);
                 SpringForce springForce = new SpringForce();
                 springForce.setStiffness(100f);
                 springForce.setDampingRatio(1);
@@ -193,6 +209,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 final SpringAnimation rotate = new SpringAnimation(clockFace,
                         DynamicAnimation.ROTATION);
+                loadInAlarms(2);
                 SpringForce springForce = new SpringForce();
                 springForce.setStiffness(100f);
                 springForce.setDampingRatio(1);
@@ -235,6 +252,19 @@ public class MainActivity extends Activity {
                 someHandler.postDelayed(this, 1000);
             }
         }, 10);
+    }
+
+    private ArrayList<AlarmTime> loadInAlarms(int quadrantNumber) {
+        switch (quadrantNumber) {
+            case 0:
+                return alarmTimeManager.getAlarmTimes12to3();
+            case 1:
+                return alarmTimeManager.getAlarmTimes3to6();
+            case 2:
+                return alarmTimeManager.getAlarmTimes6to9();
+            case 3:
+                return alarmTimeManager.getAlarmTimes9to12();
+        }
     }
 
     //Changing fragments (might want to delete later)
