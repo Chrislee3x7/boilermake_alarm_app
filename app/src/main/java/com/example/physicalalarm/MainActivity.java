@@ -11,6 +11,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,6 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MainActivity extends Activity {
@@ -203,6 +205,23 @@ public class MainActivity extends Activity {
                 }
             }
         });
+
+        final Handler someHandler = new Handler(getMainLooper());
+        someHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Calendar calendar = Calendar.getInstance();
+                int hour = calendar.get(Calendar.HOUR);
+                int minute = calendar.get(Calendar.MINUTE);
+
+                int hourAngle = 90-(hour/12)*360;
+                int minuteAngle = 90-(minute/60)*360;
+
+                // TODO set the angle of the two images to this
+
+                someHandler.postDelayed(this, 1000);
+            }
+        }, 10);
     }
 
     //Changing fragments (might want to delete later)
