@@ -116,27 +116,41 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/power1"
         android:layout_width="124dp"
         android:layout_height="119dp"
+        android:src="@drawable/ic_baseline_power_settings_new_24"
+        android:tint="#0000"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
-        android:src="@drawable/ic_baseline_power_settings_new_24" />
+        app:layout_constraintVertical_bias="0.502" />
+
+    <ImageView
+        android:id="@+id/power2"
+        android:layout_width="124dp"
+        android:layout_height="119dp"
+        android:src="@drawable/ic_baseline_power_settings_new_24"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
     <Button
         android:id="@+id/powerbutton"
         android:layout_width="124dp"
         android:layout_height="120dp"
         android:alpha="0"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintBottom_toBottomOf="@+id/power1"
+        app:layout_constraintEnd_toEndOf="@+id/power1"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="@+id/power1"
+        app:layout_constraintTop_toTopOf="@+id/power1"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
