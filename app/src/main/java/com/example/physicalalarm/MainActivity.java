@@ -414,6 +414,8 @@ public class MainActivity extends Activity {
         zoomToTopAnimX.addEndListener(new DynamicAnimation.OnAnimationEndListener() {
             @Override
             public void onAnimationEnd(DynamicAnimation animation, boolean canceled, float value, float velocity) {
+                alarmsScrollView.startAnimation(fadeIn);
+                alarmsScrollView.setVisibility(View.VISIBLE);
                 zoomAnimEnded.set(true);
             }
         });
@@ -437,13 +439,6 @@ public class MainActivity extends Activity {
         springForce.setDampingRatio(1);
         panDownAnimY.setSpring(springForce);
         panDownAnimY.animateToFinalPosition(1500f);
-        panDownAnimY.addEndListener(new DynamicAnimation.OnAnimationEndListener() {
-            @Override
-            public void onAnimationEnd(DynamicAnimation animation, boolean canceled, float value, float velocity) {
-                alarmsScrollView.startAnimation(fadeIn);
-                alarmsScrollView.setVisibility(View.VISIBLE);
-            }
-        });
     }
 
     public AlarmTimeManager getAlarmTimeManager() {
