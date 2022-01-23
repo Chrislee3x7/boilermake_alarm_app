@@ -82,6 +82,7 @@ public class NumberPickerFragment extends Fragment {
                 AlarmTime alarmTime = new AlarmTime(timePicker.getHour(), timePicker.getMinute(), false);
                 AlarmTimeManager alarmTimeManager = ((MainActivity) getActivity()).getAlarmTimeManager();
                 alarmTimeManager.addAlarmTime(alarmTime);
+                ((MainActivity) getActivity()).loadInAlarmIndicators();
                 getActivity().getFragmentManager().popBackStack();
             }
         });

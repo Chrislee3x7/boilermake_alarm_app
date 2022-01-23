@@ -51,6 +51,11 @@ public class AlarmTime {
         if (hour >= 12) {
             AMPM = "PM";
         }
-        return hour % 12 + ":" + minute + " " + AMPM;
+        String s = Integer.toString(hour % 12);
+        if (hour == 0) {
+            s = "12";
+        }
+        String text = String.format("%02d", minute);
+        return s + ":" + text + " " + AMPM;
     }
 }

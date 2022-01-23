@@ -303,8 +303,7 @@ public class MainActivity extends Activity {
         final float scale = getApplicationContext().getResources().getDisplayMetrics().density;
         for (AlarmTime alarmTime : alarmTimes) {
             Button newAlarm = new Button(getApplicationContext());
-            String text = String.format("%02d", alarmTime.toString());
-            newAlarm.setText(text);
+            newAlarm.setText(alarmTime.toString());
             newAlarm.setTextColor(Color.WHITE);
             newAlarm.setTextSize(20f);
             newAlarm.setWidth((int) (145 * scale));
@@ -357,10 +356,9 @@ public class MainActivity extends Activity {
     }
 
 
-    private void loadInAlarmIndicators() {
+    public void loadInAlarmIndicators() {
         ArrayList<AlarmTime> alarmTimes = alarmTimeManager.getAlarmTimes();
-
-
+        alarmIndicators.removeAllViews();
         int index = 0;
         for (AlarmTime a : alarmTimes) {
             ImageView iv = new ImageView(getApplicationContext());

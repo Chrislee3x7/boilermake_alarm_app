@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import android.app.Fragment;
 
+import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,9 @@ public class alarm_screen extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TransitionInflater inflater = TransitionInflater.from(getContext());
+        setEnterTransition(inflater.inflateTransition(R.transition.slide_bottom));
+        setExitTransition(inflater.inflateTransition(R.transition.slide_bottom));
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
