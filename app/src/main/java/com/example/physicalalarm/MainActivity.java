@@ -15,6 +15,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.Ringtone;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,6 +30,8 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.example.physicalalarm.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -59,6 +62,7 @@ public class MainActivity extends Activity {
 
     private ImageButton goToScreen;
 
+    private ActivityMainBinding binding;
     private AlarmTimeManager alarmTimeManager;
     private AlarmManager alarmManager;
     private PendingIntent pendingIntent;
@@ -68,6 +72,16 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Intent intent = getIntent();
+        //Ringtone r = (Ringtone) intent.getSerializableExtra("Ringing");
+        if (SoundPlayer.isPlaying) {
+            Toast.makeText(getApplicationContext(), "Ringing intent found", Toast.LENGTH_SHORT).show();
+            Fragment selectedFragment = new RingingScreenFragment();
+            fragmentManager = getFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.main, selectedFragment);
+            fragmentTransaction.commit();
+        }
         zoomAnimEnded = new AtomicBoolean(true);
         clockExpanded = false;
 

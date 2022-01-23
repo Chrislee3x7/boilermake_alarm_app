@@ -52,7 +52,7 @@ public class RingingScreenFragment extends Fragment {
         Sensor sensor = sm.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
         sm.registerListener(listener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
 
-        double[] accValues = new double[20];
+        double[] accValues = new double[200];
         final int[] indexToBeReplaced = {0};
 
         final Handler someHandler = new Handler(getMainLooper());
@@ -61,17 +61,19 @@ public class RingingScreenFragment extends Fragment {
             public void run() {
                 double netAcc = Math.sqrt(xAccel*xAccel + yAccel*yAccel + zAccel*zAccel);
                 accValues[indexToBeReplaced[0]] = netAcc;
-                indexToBeReplaced[0] = (indexToBeReplaced[0] + 1) % 20;
+                indexToBeReplaced[0] = (indexToBeReplaced[0] + 1) % 200;
 
                 double totalAcc = 0;
-                for(int i=0; i<20; i++){
+                for(int i=0; i<200; i++){
                     totalAcc += accValues[i];
                 }
 
-                totalAcc /= 20;
+                totalAcc /= 200;
 
                 if(totalAcc >= 10){
-                    System.out.println("Shaken vigorously for 2+ seconds");
+                    if(SoundPlayer.isPlaying){
+                        SoundPlayer.stopSound();
+                    }
                 }
 
                 someHandler.postDelayed(this, 100);

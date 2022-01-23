@@ -153,7 +153,7 @@
 <!--        app:rippleColor="#000000" />-->
 
     <ImageButton
-        android:id="@+id/AddAlarm"
+        android:id="@+id/add_alarm_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="80dp"
