@@ -228,6 +228,7 @@ public class MainActivity extends Activity {
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.main, selectedFragment);
         goToScreen.setVisibility(View.GONE);
+        clockFace.setVisibility(View.GONE);
         fragmentTransaction.commit();
     }
 
