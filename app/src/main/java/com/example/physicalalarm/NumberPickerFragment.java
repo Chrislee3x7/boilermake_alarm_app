@@ -1,13 +1,21 @@
 package com.example.physicalalarm;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.NumberPicker;
+import android.widget.TimePicker;
+
+import java.sql.Time;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,6 +54,8 @@ public class NumberPickerFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+    private TimePicker timePicker;
+    private Button confirmBtn;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +68,19 @@ public class NumberPickerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_number_picker, container, false);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_number_picker, container, false);
+        timePicker = root.findViewById(R.id.timePicker);
+        confirmBtn = root.findViewById(R.id.confirm);
+
+        confirmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlarmTime alarmTime = new AlarmTime(timePicker.getHour(), timePicker.getMinute(), false);
+                AlarmTimeManager alarmTimeManager = new AlarmTimeManager(getActivity().getApplicationContext());
+                alarmTimeManager.addAlarmTime(alarmTime);
+                getActivity().getFragmentManager().popBackStack();
+            }
+        });
+        return root;
     }
 }
