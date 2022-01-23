@@ -375,9 +375,6 @@ public class MainActivity extends Activity {
             iv.setRotation(angle);
         }
     }
-    public static AlarmTime getSelectedTime() {
-        return selectedTime;
-    }
     public static void setSelectedTime(AlarmTime alarmTime) {
         selectedTime = alarmTime;
     }

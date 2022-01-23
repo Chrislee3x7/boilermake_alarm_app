@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +28,8 @@ public class alarm_screen extends Fragment {
 
     private Button powerButton;
     private AlarmTime editingAlarmTime;
+    private ImageView powerButtonImageOn;
+    private ImageView powerButtonImageOff;
 
     public alarm_screen() {
         // Required empty public constructor
@@ -65,13 +68,29 @@ public class alarm_screen extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_number_picker, container, false);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_alarm_screen, container, false);
         powerButton = root.findViewById(R.id.powerbutton);
+        powerButtonImageOn = root.findViewById(R.id.power2);
+        powerButtonImageOff = root.findViewById(R.id.power1);
         editingAlarmTime = MainActivity.selectedTime;
+        if(editingAlarmTime.isOn() == true){
+            powerButtonImageOn.setVisibility(View.VISIBLE);
+            powerButtonImageOff.setVisibility(View.GONE);
+        } else {
+            powerButtonImageOn.setVisibility(View.GONE);
+            powerButtonImageOff.setVisibility(View.VISIBLE);
+        }
         powerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                editingAlarmTime.setOn(!editingAlarmTime.isOn());
+                if(editingAlarmTime.isOn() == true){
+                    powerButtonImageOn.setVisibility(View.VISIBLE);
+                    powerButtonImageOff.setVisibility(View.GONE);
+                } else {
+                    powerButtonImageOn.setVisibility(View.GONE);
+                    powerButtonImageOff.setVisibility(View.VISIBLE);
+                }
             }
         });
         return root;
