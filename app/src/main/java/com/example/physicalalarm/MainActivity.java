@@ -26,10 +26,12 @@ public class MainActivity extends Activity {
 
     private View clockFace;
     private View clockTicksAndNumbers;
-    private AtomicBoolean zoomAnimEnded;
-    private boolean clockExpanded;
     private View minuteHand;
     private View hourHand;
+    private View addAlarmButton;
+
+    private AtomicBoolean zoomAnimEnded;
+    private boolean clockExpanded;
 
     float y1 = 0;
     float y2 = 0;
@@ -46,10 +48,12 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         zoomAnimEnded = new AtomicBoolean(true);
         clockExpanded = false;
+
         clockFace = findViewById(R.id.clock_face);
         clockTicksAndNumbers = findViewById(R.id.clock_ticks_numbers);
         hourHand = findViewById(R.id.hour_hand);
         minuteHand = findViewById(R.id.minute_hand);
+        addAlarmButton = findViewById(R.id.add_alarm_button);
 
         clockFace.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -76,35 +80,18 @@ public class MainActivity extends Activity {
             }
         });
 
+        addAlarmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
         ImageView topLeftWedge = findViewById(R.id.top_left_wedge);
         ImageView topRightWedge = findViewById(R.id.top_right_wedge);
         ImageView bottomLeftWedge = findViewById(R.id.bottom_left_wedge);
         ImageView bottomRightWedge = findViewById(R.id.bottom_right_wedge);
-//        topLeftWedge.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                final int MIN_DISTANCE = 200;
-//                switch(event.getAction()) {
-//                    case MotionEvent.ACTION_DOWN:
-//                        y1 = event.getY();
-//                        break;
-//                    case MotionEvent.ACTION_UP:
-//                        y2 = event.getY();
-//                        float deltaY = y1 - y2;
-//                        if (deltaY > MIN_DISTANCE)
-//                        {
-//                            Toast.makeText(getApplicationContext(), "swipe up", Toast.LENGTH_SHORT).show();
-//                        }
-//                        else
-//                        {
-//                            // consider as something else - a screen tap for example
-//                        }
-//                        break;
-//                }
-//                return true;
-//            }
-//        });
-        goToScreen = findViewById(R.id.button1);
+
+        //goToScreen = findViewById(R.id.button1);
 
         goToScreen.setOnClickListener(new View.OnClickListener() {
             @Override
