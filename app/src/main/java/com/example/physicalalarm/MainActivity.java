@@ -352,6 +352,7 @@ public class MainActivity extends Activity {
         }
     }
 
+
     private void loadInAlarmIndicators() {
         ArrayList<AlarmTime> alarmTimes = alarmTimeManager.getAlarmTimes();
 
@@ -495,5 +496,4 @@ public class MainActivity extends Activity {
 
         }
     }
-
 }
