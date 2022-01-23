@@ -37,6 +37,7 @@ public class RingingScreenFragment extends Fragment {
             xAccel = Math.abs(event.values[0]);
             yAccel = Math.abs(event.values[1]);
             zAccel = Math.abs(event.values[2]);
+            System.out.println("x=" + xAccel + "y=" + yAccel + "z=" +zAccel);
         }
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -62,20 +63,21 @@ public class RingingScreenFragment extends Fragment {
                 accValues[indexToBeReplaced[0]] = netAcc;
                 indexToBeReplaced[0] = (indexToBeReplaced[0] + 1) % 20;
 
-                int zeroCount = 0;
-                int totalAcc = 0;
+                double totalAcc = 0;
                 for(int i=0; i<20; i++){
                     totalAcc += accValues[i];
                 }
 
                 totalAcc /= 20;
 
-                if(zeroCount <= 5 && totalAcc >= 15){
+                if(totalAcc >= 10){
                     System.out.println("Shaken vigorously for 2+ seconds");
                 }
 
+                someHandler.postDelayed(this, 100);
+
             }
-        }, 100);
+        }, 10);
 
 
         return inflater.inflate(R.layout.fragment_ringing_screen, container, false);

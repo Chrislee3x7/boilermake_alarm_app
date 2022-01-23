@@ -12,23 +12,42 @@
 
         <NumberPicker
             android:id="@+id/hour"
-            android:layout_width="180dp"
-            android:layout_height="205dp"
+            android:layout_width="120dp"
+            android:layout_height="280dp"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
-            tools:layout_editor_absoluteX="200dp"
-            tools:layout_editor_absoluteY="0dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.348">
 
         </NumberPicker>
 
         <NumberPicker
             android:id="@+id/min"
             android:layout_width="120dp"
-            android:layout_height="205dp"
+            android:layout_height="280dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/am_pm"
+            app:layout_constraintHorizontal_bias="0.488"
+            app:layout_constraintStart_toEndOf="@+id/hour"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="26dp">
+            app:layout_constraintVertical_bias="0.348">
 
         </NumberPicker>
+
+        <NumberPicker
+            android:id="@+id/am_pm"
+            android:layout_width="120dp"
+            android:layout_height="280dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.348">
+
+        </NumberPicker>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
