@@ -35,7 +35,7 @@ public class AlarmTimeManager {
 
         this.context = context;
         try {
-            BufferedReader br = new BufferedReader(new FileReader("alarmtimes.txt"));
+            BufferedReader br = new BufferedReader(new FileReader(new File(context.getFilesDir(), "alarmtimes.txt")));
             String line = br.readLine();
             while(line!=null){
                 String[] data = line.split(",");
@@ -46,6 +46,7 @@ public class AlarmTimeManager {
             br.close();
 
         } catch (FileNotFoundException e) {
+            System.out.println("hello");
             File file = new File(context.getFilesDir(), "alarmtimes.txt");
         } catch (IOException e) {
             e.printStackTrace();
@@ -182,13 +183,14 @@ public class AlarmTimeManager {
      */
     public void updateAlarmTimesFile(){
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("alarmtimes.txt"));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(new File(context.getFilesDir(), "alarmtimes.txt")));
             for(AlarmTime a : alarmTimes){
                 bw.write(a.getHour() + "," + a.getMinute() + "," + a.isOn());
                 bw.newLine();
             }
             bw.close();
         } catch (IOException e) {
+            System.out.println("help");
             File file = new File(context.getFilesDir(), "alarmtimes.txt");
         }
     }

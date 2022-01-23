@@ -31,6 +31,7 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 //import com.example.physicalalarm.databinding.ActivityMainBinding;
@@ -48,6 +49,7 @@ public class MainActivity extends Activity {
     private View addAlarmButton;
     private GridLayout displayedAlarms;
     private View alarmsScrollView;
+    private RelativeLayout alarmIndicators;
 
     private AtomicBoolean zoomAnimEnded;
     private boolean clockExpanded;
@@ -99,6 +101,7 @@ public class MainActivity extends Activity {
         displayedAlarms = findViewById(R.id.displayed_alarms);
 
         alarmsScrollView = findViewById(R.id.alarms_scroll_view);
+        alarmIndicators = findViewById(R.id.alarm_indicators);
 
         alarmTimeManager = new AlarmTimeManager(getApplicationContext());
 
@@ -359,19 +362,11 @@ public class MainActivity extends Activity {
 
         int index = 0;
         for (AlarmTime a : alarmTimes) {
-
-            ConstraintLayout parentLayout = (ConstraintLayout) findViewById(R.id.clock_parts);
-            ConstraintSet set = new ConstraintSet();
-
             ImageView iv = new ImageView(getApplicationContext());
+            iv.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
+                    RelativeLayout.LayoutParams.MATCH_PARENT));
             iv.setBackground(getDrawable(R.drawable.ic_alarmtimeindicator));
-            iv.setId(View.generateViewId());
-            parentLayout.addView(iv, index);
-            index++;
-
-            set.clone(parentLayout);
-            set.connect(iv.getId(), ConstraintSet.TOP, parentLayout.getId(), ConstraintSet.TOP, 0);
-            set.applyTo(parentLayout);
+            alarmIndicators.addView(iv);
 
             float hour = a.getHour();
             float minute = a.getMinute();
