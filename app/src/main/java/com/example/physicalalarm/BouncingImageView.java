@@ -36,7 +36,7 @@ public class BouncingImageView extends androidx.appcompat.widget.AppCompatImageV
     private final Runnable mRunnable = new Runnable() {
         private static final int DIRECTION_POSITIVE = 1;
         private static final int DIRECTION_NEGATIVE = -1;
-        private static final int ANIMATION_STEPS = 1;
+        private static final int ANIMATION_STEPS = 4;
         private int mHorizontalDirection = DIRECTION_POSITIVE;
         private int mVerticalDirection = DIRECTION_NEGATIVE;
 
