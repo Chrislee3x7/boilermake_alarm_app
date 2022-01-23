@@ -27,15 +27,16 @@ public class RingingScreenFragment extends Fragment {
 
     private SensorManager sm;
 
+    private float xAccel;
+    private float yAccel;
+    private float zAccel;
+
     private SensorEventListener listener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
-            float xValue = Math.abs(event.values[0]);
-            float yValue = Math.abs(event.values[1]);
-            float zValue = Math.abs(event.values[2]);
-            if (xValue > 15 || yValue > 15 || zValue > 15) {
-
-            }
+            xAccel = Math.abs(event.values[0]);
+            yAccel = Math.abs(event.values[1]);
+            zAccel = Math.abs(event.values[2]);
         }
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -49,6 +50,32 @@ public class RingingScreenFragment extends Fragment {
         sm = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
         Sensor sensor = sm.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
         sm.registerListener(listener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+
+        double[] accValues = new double[20];
+        final int[] indexToBeReplaced = {0};
+
+        final Handler someHandler = new Handler(getMainLooper());
+        someHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                double netAcc = Math.sqrt(xAccel*xAccel + yAccel*yAccel + zAccel*zAccel);
+                accValues[indexToBeReplaced[0]] = netAcc;
+                indexToBeReplaced[0] = (indexToBeReplaced[0] + 1) % 20;
+
+                int zeroCount = 0;
+                int totalAcc = 0;
+                for(int i=0; i<20; i++){
+                    totalAcc += accValues[i];
+                }
+
+                totalAcc /= 20;
+
+                if(zeroCount <= 5 && totalAcc >= 15){
+                    System.out.println("Shaken vigorously for 2+ seconds");
+                }
+
+            }
+        }, 100);
 
 
         return inflater.inflate(R.layout.fragment_ringing_screen, container, false);
