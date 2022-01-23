@@ -2,7 +2,7 @@ package com.example.physicalalarm;
 
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
+import android.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,9 +46,6 @@ public class NumberPickerFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
-    private NumberPicker picker1;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,13 +53,11 @@ public class NumberPickerFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        //picker1 = findViewById(R.id.numberpicker_main_picker);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_number_picker, container, false);
     }
 }
