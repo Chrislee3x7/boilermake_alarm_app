@@ -16,7 +16,7 @@ public class SoundPlayer  {
         Ringtone r = RingtoneManager.getRingtone(context, alarmSound);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             r.setLooping(true);
-        };
+        }
         isPlaying = true;
         r.play();
     }
