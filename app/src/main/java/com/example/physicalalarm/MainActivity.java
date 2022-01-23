@@ -1,5 +1,6 @@
 package com.example.physicalalarm;
 
+import androidx.annotation.RequiresApi;
 import androidx.dynamicanimation.animation.DynamicAnimation;
 import androidx.dynamicanimation.animation.SpringAnimation;
 import androidx.dynamicanimation.animation.SpringForce;
@@ -8,6 +9,11 @@ import android.app.Fragment;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.fonts.Font;
+import android.graphics.fonts.FontFamily;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
@@ -34,6 +40,7 @@ public class MainActivity extends Activity {
     private View hourHand;
     private View addAlarmButton;
     private GridLayout displayedAlarms;
+    private View alarmsScrollView;
 
     private AtomicBoolean zoomAnimEnded;
     private boolean clockExpanded;
@@ -68,11 +75,12 @@ public class MainActivity extends Activity {
         addAlarmButton = findViewById(R.id.add_alarm_button); 
         displayedAlarms = findViewById(R.id.displayed_alarms);
 
+        alarmsScrollView = findViewById(R.id.alarms_scroll_view);
+
         alarmTimeManager = new AlarmTimeManager(getApplicationContext());
-        alarmTimeManager.addAlarmTime(new AlarmTime(22, 20, false));
-        alarmTimeManager.addAlarmTime(new AlarmTime(22, 10, false));
-        alarmTimeManager.addAlarmTime(new AlarmTime(22, 30, false));
-        alarmTimeManager.addAlarmTime(new AlarmTime(22, 40, false));
+
+
+        alarmTimeManager.addAlarmTime(new AlarmTime(22, 12, false));
 
 
         clockFace.setOnTouchListener(new View.OnTouchListener() {
@@ -134,7 +142,6 @@ public class MainActivity extends Activity {
                 final SpringAnimation rotate = new SpringAnimation(clockFace,
                         DynamicAnimation.ROTATION);
                 loadInAlarms(3);
-
                 SpringForce springForce = new SpringForce();
                 springForce.setStiffness(100f);
                 springForce.setDampingRatio(1);
@@ -273,11 +280,19 @@ public class MainActivity extends Activity {
             default:
                 alarmTimes = null;
         }
+        final float scale = getApplicationContext().getResources().getDisplayMetrics().density;
         for (AlarmTime alarmTime : alarmTimes) {
             Button newAlarm = new Button(getApplicationContext());
             newAlarm.setText(alarmTime.toString());
-            newAlarm.setWidth(145);
-            newAlarm.setHeight(100);
+            newAlarm.setTextColor(Color.WHITE);
+            newAlarm.setTextSize(20f);
+            newAlarm.setBackground(getDrawable(R.drawable.rounded_rectangle));
+            newAlarm.setWidth((int) (145 * scale));
+            newAlarm.setHeight((int) (100 * scale));
+            GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+            params.setMargins((int) (10 * scale), (int) (10 * scale),
+                    (int) (10 * scale), (int) (10 * scale));
+            newAlarm.setLayoutParams(params);
             displayedAlarms.addView(newAlarm);
         }
     }
@@ -300,7 +315,7 @@ public class MainActivity extends Activity {
         addAlarmButton.startAnimation(fadeIn);
         clockPartsGroup.setVisibility(View.VISIBLE);
         addAlarmButton.setVisibility(View.VISIBLE);
-
+        alarmsScrollView.setVisibility(View.GONE);
         final SpringAnimation zoomToTopAnimX = new SpringAnimation(clockFace, DynamicAnimation.SCALE_X);
         final SpringAnimation zoomToTopAnimY = new SpringAnimation(clockFace, DynamicAnimation.SCALE_Y);
         SpringForce springForce = new SpringForce();
@@ -322,6 +337,7 @@ public class MainActivity extends Activity {
         addAlarmButton.startAnimation(fadeIn);
         clockPartsGroup.setVisibility(View.GONE);
         addAlarmButton.setVisibility(View.GONE);
+        alarmsScrollView.setVisibility(View.VISIBLE);
         final SpringAnimation zoomToTopAnimX = new SpringAnimation(clockFace, DynamicAnimation.SCALE_X);
         final SpringAnimation zoomToTopAnimY = new SpringAnimation(clockFace, DynamicAnimation.SCALE_Y);
         SpringForce springForce = new SpringForce();
