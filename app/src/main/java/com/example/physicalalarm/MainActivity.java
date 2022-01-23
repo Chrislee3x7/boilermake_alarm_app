@@ -1,6 +1,5 @@
 package com.example.physicalalarm;
 
-import androidx.annotation.RequiresApi;
 import androidx.dynamicanimation.animation.DynamicAnimation;
 import androidx.dynamicanimation.animation.SpringAnimation;
 import androidx.dynamicanimation.animation.SpringForce;
@@ -10,22 +9,17 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.graphics.Color;
-import android.graphics.Typeface;
-import android.graphics.fonts.Font;
-import android.graphics.fonts.FontFamily;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -56,7 +50,7 @@ public class MainActivity extends Activity {
     private FragmentTransaction fragmentTransaction;
     private FragmentManager fragmentManager;
 
-    private Button goToScreen;
+    private ImageButton goToScreen;
 
     private AlarmTimeManager alarmTimeManager;
 
@@ -73,7 +67,6 @@ public class MainActivity extends Activity {
 
         hourHand = findViewById(R.id.hour_hand);
         minuteHand = findViewById(R.id.minute_hand);
-        addAlarmButton = findViewById(R.id.add_alarm_button); 
         displayedAlarms = findViewById(R.id.displayed_alarms);
 
         alarmsScrollView = findViewById(R.id.alarms_scroll_view);
@@ -109,13 +102,6 @@ public class MainActivity extends Activity {
             }
         });
 
-        addAlarmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
         fadeIn = new AlphaAnimation(0, 1);
         fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
         fadeIn.setDuration(1000);
@@ -128,7 +114,7 @@ public class MainActivity extends Activity {
         ImageView bottomLeftWedge = findViewById(R.id.bottom_left_wedge);
         ImageView bottomRightWedge = findViewById(R.id.bottom_right_wedge);
 
-        goToScreen = findViewById(R.id.button1);
+        goToScreen = findViewById(R.id.AddAlarm);
 
         goToScreen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -300,7 +286,7 @@ public class MainActivity extends Activity {
 
     //Changing fragments (might want to delete later)
     public void handleChangeFragment(View view) {
-        Fragment selectedFragment = new alarm_screen();
+        Fragment selectedFragment = new NumberPickerFragment();
         fragmentManager = getFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.main, selectedFragment);
