@@ -37,6 +37,7 @@ public class RingingScreenFragment extends Fragment {
             xAccel = Math.abs(event.values[0]);
             yAccel = Math.abs(event.values[1]);
             zAccel = Math.abs(event.values[2]);
+            System.out.println("x=" + xAccel + "y=" + yAccel + "z=" +zAccel);
         }
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -70,7 +71,7 @@ public class RingingScreenFragment extends Fragment {
 
                 totalAcc /= 20;
 
-                if(zeroCount <= 5 && totalAcc >= 2){
+                if(zeroCount <= 5 && totalAcc >= 10){
                     System.out.println("Shaken vigorously for 2+ seconds");
                 }
 

@@ -91,14 +91,14 @@ public class MainActivity extends Activity {
         ImageView bottomLeftWedge = findViewById(R.id.bottom_left_wedge);
         ImageView bottomRightWedge = findViewById(R.id.bottom_right_wedge);
 
-        //goToScreen = findViewById(R.id.button1);
+        goToScreen = findViewById(R.id.button1);
 
-//        goToScreen.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                handleChangeFragment(view);
-//            }
-//        });
+        goToScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleChangeFragment(view);
+            }
+        });
 
         topLeftWedge.setOnClickListener(new View.OnClickListener() {
             @Override

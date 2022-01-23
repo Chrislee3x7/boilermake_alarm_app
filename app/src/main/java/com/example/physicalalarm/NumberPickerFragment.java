@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.NumberPicker;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,6 +47,8 @@ public class NumberPickerFragment extends Fragment {
         return fragment;
     }
 
+    private NumberPicker picker1;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +56,7 @@ public class NumberPickerFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        //picker1 = findViewById(R.id.numberpicker_main_picker);
     }
 
     @Override
