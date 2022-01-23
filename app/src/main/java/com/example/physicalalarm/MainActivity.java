@@ -133,7 +133,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 final SpringAnimation rotate = new SpringAnimation(clockFace,
                         DynamicAnimation.ROTATION);
-                ArrayList<AlarmTime> alarmTimes = loadInAlarms(3);
+                loadInAlarms(3);
 
                 SpringForce springForce = new SpringForce();
                 springForce.setStiffness(100f);
@@ -275,9 +275,10 @@ public class MainActivity extends Activity {
         }
         for (AlarmTime alarmTime : alarmTimes) {
             Button newAlarm = new Button(getApplicationContext());
-            newAlarm.setText(alarmTime);
-
-            displayedAlarms.addView();
+            newAlarm.setText(alarmTime.toString());
+            newAlarm.setWidth(145);
+            newAlarm.setHeight(100);
+            displayedAlarms.addView(newAlarm);
         }
     }
 
