@@ -118,12 +118,10 @@ public class MainActivity extends Activity {
                     case MotionEvent.ACTION_UP:
                         y2 = event.getY();
                         float deltaY = y1 - y2;
-                        if (deltaY > MIN_DISTANCE)
-                        {
+                        if (deltaY > MIN_DISTANCE) {
                             //Toast.makeText(getApplicationContext(), "swipe up", Toast.LENGTH_SHORT).show();
                         }
-                        else
-                        {
+                        else {
                             // consider as something else - a screen tap for example
                         }
                         break;
@@ -407,6 +405,7 @@ public class MainActivity extends Activity {
         addAlarmButton.startAnimation(fadeIn);
         clockPartsGroup.setVisibility(View.VISIBLE);
         addAlarmButton.setVisibility(View.VISIBLE);
+        alarmsScrollView.startAnimation(fadeOut);
         alarmsScrollView.setVisibility(View.GONE);
         final SpringAnimation zoomToTopAnimX = new SpringAnimation(clockFace, DynamicAnimation.SCALE_X);
         final SpringAnimation zoomToTopAnimY = new SpringAnimation(clockFace, DynamicAnimation.SCALE_Y);
@@ -426,10 +425,9 @@ public class MainActivity extends Activity {
     private void animateZoomIn() {
         zoomAnimEnded.set(false);
         clockPartsGroup.startAnimation(fadeOut);
-        addAlarmButton.startAnimation(fadeIn);
+        addAlarmButton.startAnimation(fadeOut);
         clockPartsGroup.setVisibility(View.GONE);
         addAlarmButton.setVisibility(View.GONE);
-        alarmsScrollView.setVisibility(View.VISIBLE);
         final SpringAnimation zoomToTopAnimX = new SpringAnimation(clockFace, DynamicAnimation.SCALE_X);
         final SpringAnimation zoomToTopAnimY = new SpringAnimation(clockFace, DynamicAnimation.SCALE_Y);
         SpringForce springForce = new SpringForce();
@@ -438,6 +436,8 @@ public class MainActivity extends Activity {
         zoomToTopAnimX.addEndListener(new DynamicAnimation.OnAnimationEndListener() {
             @Override
             public void onAnimationEnd(DynamicAnimation animation, boolean canceled, float value, float velocity) {
+                alarmsScrollView.startAnimation(fadeIn);
+                alarmsScrollView.setVisibility(View.VISIBLE);
                 zoomAnimEnded.set(true);
             }
         });
