@@ -1,5 +1,7 @@
 package com.example.physicalalarm;
 
+import androidx.annotation.NonNull;
+
 /**
  * A class to represent one alarm time, in 24 hour time
  */
@@ -41,5 +43,14 @@ public class AlarmTime {
 
     public int getCombined(){
         return hour*100 + minute;
+    }
+
+    @Override
+    public String toString() {
+        String AMPM = "AM";
+        if (hour >= 12) {
+            AMPM = "PM";
+        }
+        return hour % 12 + ":" + minute + " " + AMPM;
     }
 }

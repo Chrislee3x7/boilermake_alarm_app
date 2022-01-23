@@ -209,7 +209,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 final SpringAnimation rotate = new SpringAnimation(clockFace,
                         DynamicAnimation.ROTATION);
-                loadInAlarms(2);
+                loadInAlarms(1);
                 SpringForce springForce = new SpringForce();
                 springForce.setStiffness(100f);
                 springForce.setDampingRatio(1);
@@ -254,16 +254,30 @@ public class MainActivity extends Activity {
         }, 10);
     }
 
-    private ArrayList<AlarmTime> loadInAlarms(int quadrantNumber) {
+    private void loadInAlarms(int quadrantNumber) {
+        displayedAlarms.removeAllViews();
+        ArrayList<AlarmTime> alarmTimes;
         switch (quadrantNumber) {
             case 0:
-                return alarmTimeManager.getAlarmTimes12to3();
+                alarmTimes = alarmTimeManager.getAlarmTimes12to3();
+                break;
             case 1:
-                return alarmTimeManager.getAlarmTimes3to6();
+                alarmTimes = alarmTimeManager.getAlarmTimes3to6();
+                break;
             case 2:
-                return alarmTimeManager.getAlarmTimes6to9();
+                alarmTimes = alarmTimeManager.getAlarmTimes6to9();
+                break;
             case 3:
-                return alarmTimeManager.getAlarmTimes9to12();
+                alarmTimes = alarmTimeManager.getAlarmTimes9to12();
+                break;
+            default:
+                alarmTimes = null;
+        }
+        for (AlarmTime alarmTime : alarmTimes) {
+            Button newAlarm = new Button(getApplicationContext());
+            newAlarm.setText(alarmTime);
+
+            displayedAlarms.addView();
         }
     }
 
