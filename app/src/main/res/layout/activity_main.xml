@@ -136,27 +136,35 @@
 
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ringing Page"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clock_face" />
+<!--    <Button-->
+<!--        android:id="@+id/AddAlarm"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:backgroundTint="#0000"-->
+<!--        android:text="@string/add"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:textSize="17sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/clock_face"-->
+<!--        app:layout_constraintVertical_bias="0.883"-->
+<!--        app:rippleColor="#000000" />-->
 
     <ImageButton
-        android:id="@+id/add_alarm_button"
+        android:id="@+id/AddAlarm"
         android:layout_width="wrap_content"
-        android:visibility="gone"
         android:layout_height="wrap_content"
+        android:layout_margin="80dp"
+        android:layout_marginBottom="108dp"
         android:background="@drawable/round_button"
         android:padding="5dp"
-        android:layout_margin="80dp"
         android:src="@drawable/ic_baseline_add"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,5 @@
 package com.example.physicalalarm;
 
-import androidx.annotation.RequiresApi;
 import androidx.dynamicanimation.animation.DynamicAnimation;
 import androidx.dynamicanimation.animation.SpringAnimation;
 import androidx.dynamicanimation.animation.SpringForce;
@@ -16,22 +15,18 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
-import android.graphics.fonts.Font;
-import android.graphics.fonts.FontFamily;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -62,7 +57,7 @@ public class MainActivity extends Activity {
     private FragmentTransaction fragmentTransaction;
     private FragmentManager fragmentManager;
 
-    private Button goToScreen;
+    private ImageButton goToScreen;
 
     private AlarmTimeManager alarmTimeManager;
     private AlarmManager alarmManager;
@@ -119,13 +114,6 @@ public class MainActivity extends Activity {
             }
         });
 
-        addAlarmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
         fadeIn = new AlphaAnimation(0, 1);
         fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
         fadeIn.setDuration(1000);
@@ -138,7 +126,7 @@ public class MainActivity extends Activity {
         ImageView bottomLeftWedge = findViewById(R.id.bottom_left_wedge);
         ImageView bottomRightWedge = findViewById(R.id.bottom_right_wedge);
 
-        goToScreen = findViewById(R.id.button1);
+        goToScreen = findViewById(R.id.add_alarm_button);
 
         goToScreen.setOnClickListener(new View.OnClickListener() {
             @Override

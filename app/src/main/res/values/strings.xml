@@ -2,4 +2,7 @@
     <string name="app_name">Physical Alarm</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="confirm"><u>CONFIRM</u></string>
+    <string name="delete"><u>DELETE</u></string>
+    <string name="add"><u>ADD ALARM</u></string>
 </resources>
