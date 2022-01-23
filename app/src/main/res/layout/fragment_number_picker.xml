@@ -10,43 +10,103 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <NumberPicker
-            android:id="@+id/hour"
-            android:layout_width="120dp"
-            android:layout_height="280dp"
-            android:layout_marginStart="16dp"
-            android:layout_weight="1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.348">
-
-        </NumberPicker>
-
-        <NumberPicker
-            android:id="@+id/min"
-            android:layout_width="120dp"
-            android:layout_height="280dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/am_pm"
-            app:layout_constraintHorizontal_bias="0.488"
-            app:layout_constraintStart_toEndOf="@+id/hour"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.348">
-
-        </NumberPicker>
-
-        <NumberPicker
-            android:id="@+id/am_pm"
-            android:layout_width="120dp"
-            android:layout_height="280dp"
-            android:layout_marginEnd="4dp"
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="339dp"
+            android:layout_height="165dp"
+            android:amPmTextColor="#58B09C"
+            android:headerBackground="#58B09C"
+            android:numbersBackgroundColor="#4A442D"
+            android:numbersSelectorColor="#CAF7E2"
+            android:timePickerMode="spinner"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.348">
+            app:layout_constraintVertical_bias="0.173">
 
-        </NumberPicker>
+        </TimePicker>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timePicker"
+            app:layout_constraintVertical_bias="0.291"
+            app:tabIconTint="#58B09C"
+            app:tabIndicatorColor="#58B09C"
+            app:tabTextColor="#FFFFFF">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/shake1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/shake2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/shake3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="256dp"
+            android:layout_height="45dp"
+            android:fontFamily="@font/quicksand"
+            android:text="Shake Intensity"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tabLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timePicker"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/quit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#000000"
+            android:text="QUIT"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#000000"
+            android:text="Confirm"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -223,7 +223,7 @@ public class MainActivity extends Activity {
 
     //Changing fragments (might want to delete later)
     public void handleChangeFragment(View view) {
-        Fragment selectedFragment = new RingingScreenFragment();
+        Fragment selectedFragment = new NumberPickerFragment();
         fragmentManager = getFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.main, selectedFragment);
