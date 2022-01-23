@@ -10,6 +10,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -288,8 +289,9 @@ public class MainActivity extends Activity {
         fragmentManager = getFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.main, selectedFragment);
-        goToScreen.setVisibility(View.GONE);
-        clockFace.setVisibility(View.GONE);
+        fragmentTransaction.addToBackStack(null);
+//        goToScreen.setVisibility(View.GONE);
+//        clockFace.setVisibility(View.GONE);
         fragmentTransaction.commit();
     }
 
