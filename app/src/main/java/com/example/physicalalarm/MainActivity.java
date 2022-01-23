@@ -28,6 +28,8 @@ public class MainActivity extends Activity {
     private View clockTicksAndNumbers;
     private AtomicBoolean zoomAnimEnded;
     private boolean clockExpanded;
+    private View minuteHand;
+    private View hourHand;
 
     float y1 = 0;
     float y2 = 0;
@@ -46,6 +48,8 @@ public class MainActivity extends Activity {
         clockExpanded = false;
         clockFace = findViewById(R.id.clock_face);
         clockTicksAndNumbers = findViewById(R.id.clock_ticks_numbers);
+        hourHand = findViewById(R.id.hour_hand);
+        minuteHand = findViewById(R.id.minute_hand);
 
         clockFace.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -206,18 +210,24 @@ public class MainActivity extends Activity {
             }
         });
 
+        final SpringAnimation rotateHourHand = new SpringAnimation(hourHand,
+                DynamicAnimation.ROTATION);
+        final SpringAnimation rotateMinuteHand = new SpringAnimation(minuteHand,
+                DynamicAnimation.ROTATION);
+
         final Handler someHandler = new Handler(getMainLooper());
         someHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 Calendar calendar = Calendar.getInstance();
-                int hour = calendar.get(Calendar.HOUR);
-                int minute = calendar.get(Calendar.MINUTE);
+                float hour = calendar.get(Calendar.HOUR);
+                float minute = calendar.get(Calendar.MINUTE);
 
-                int hourAngle = 90-(hour/12)*360;
-                int minuteAngle = 90-(minute/60)*360;
+                float hourAngle = (hour / 12) * 360 - 90;
+                float minuteAngle = (minute / 60) * 360 - 90;
 
-                // TODO set the angle of the two images to this
+                rotateHourHand.animateToFinalPosition(hourAngle);
+                rotateMinuteHand.animateToFinalPosition(minuteAngle);
 
                 someHandler.postDelayed(this, 1000);
             }
