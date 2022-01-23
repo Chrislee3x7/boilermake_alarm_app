@@ -63,7 +63,6 @@ public class RingingScreenFragment extends Fragment {
                 accValues[indexToBeReplaced[0]] = netAcc;
                 indexToBeReplaced[0] = (indexToBeReplaced[0] + 1) % 20;
 
-                int zeroCount = 0;
                 double totalAcc = 0;
                 for(int i=0; i<20; i++){
                     totalAcc += accValues[i];
@@ -71,11 +70,11 @@ public class RingingScreenFragment extends Fragment {
 
                 totalAcc /= 20;
 
-                if(zeroCount <= 5 && totalAcc >= 10){
+                if(totalAcc >= 10){
                     System.out.println("Shaken vigorously for 2+ seconds");
                 }
 
-                someHandler.postDelayed(this, 10);
+                someHandler.postDelayed(this, 100);
 
             }
         }, 10);
