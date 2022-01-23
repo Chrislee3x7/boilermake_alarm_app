@@ -162,7 +162,7 @@ public class AlarmTimeManager {
 
         if(data1[0].equals("12") && data2[1].equals("AM")) data1[0] = "0";
         int offset = 0;
-        if(data1[1].equals("PM")) offset = 12;
+        if(data2[1].equals("PM")) offset = 12;
         for(AlarmTime a : alarmTimes){
             if(a.getHour()==Integer.parseInt(data1[0]) + offset && a.getMinute()==Integer.parseInt(data2[0])){
                 return a;

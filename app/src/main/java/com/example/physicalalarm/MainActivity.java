@@ -4,11 +4,17 @@ import androidx.annotation.RequiresApi;
 import androidx.dynamicanimation.animation.DynamicAnimation;
 import androidx.dynamicanimation.animation.SpringAnimation;
 import androidx.dynamicanimation.animation.SpringForce;
+
+import android.app.AlarmManager;
 import android.app.Fragment;
 
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.fonts.Font;
@@ -59,6 +65,9 @@ public class MainActivity extends Activity {
     private Button goToScreen;
 
     private AlarmTimeManager alarmTimeManager;
+    private AlarmManager alarmManager;
+    private PendingIntent pendingIntent;
+    private Calendar calendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +82,7 @@ public class MainActivity extends Activity {
 
         hourHand = findViewById(R.id.hour_hand);
         minuteHand = findViewById(R.id.minute_hand);
-        addAlarmButton = findViewById(R.id.add_alarm_button); 
+        addAlarmButton = findViewById(R.id.add_alarm_button);
         displayedAlarms = findViewById(R.id.displayed_alarms);
 
         alarmsScrollView = findViewById(R.id.alarms_scroll_view);
@@ -83,6 +92,7 @@ public class MainActivity extends Activity {
 
         alarmTimeManager.addAlarmTime(new AlarmTime(22, 12, false));
 
+        createNotificationChannel();
 
         clockFace.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -148,13 +158,13 @@ public class MainActivity extends Activity {
                 springForce.setDampingRatio(1);
                 rotate.setSpring(springForce);
                 if (!clockExpanded && zoomAnimEnded.get()) {
-                    Toast.makeText(getApplicationContext(), "9-12 quadrant pressed", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "9-12 quadrant pressed", Toast.LENGTH_SHORT).show();
                     rotate.animateToFinalPosition(45f);
                     animatePanDown();
                     animateZoomIn();
                     clockExpanded = true;
                 } else if (zoomAnimEnded.get()) {
-                    Toast.makeText(getApplicationContext(), "tapped after expanded", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "tapped after expanded", Toast.LENGTH_SHORT).show();
                     animateZoomOut();
                     animatePanUp();
                     rotate.animateToFinalPosition(0f);
@@ -173,13 +183,13 @@ public class MainActivity extends Activity {
                 springForce.setDampingRatio(1);
                 rotate.setSpring(springForce);
                 if (!clockExpanded && zoomAnimEnded.get()) {
-                    Toast.makeText(getApplicationContext(), "12-3 quadrant pressed", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "12-3 quadrant pressed", Toast.LENGTH_SHORT).show();
                     rotate.animateToFinalPosition(-45f);
                     animatePanDown();
                     animateZoomIn();
                     clockExpanded = true;
                 } else if (zoomAnimEnded.get()) {
-                    Toast.makeText(getApplicationContext(), "tapped after expanded", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "tapped after expanded", Toast.LENGTH_SHORT).show();
                     animateZoomOut();
                     animatePanUp();
                     rotate.animateToFinalPosition(0f);
@@ -198,13 +208,13 @@ public class MainActivity extends Activity {
                 springForce.setDampingRatio(1);
                 rotate.setSpring(springForce);
                 if (!clockExpanded && zoomAnimEnded.get()) {
-                    Toast.makeText(getApplicationContext(), "6-9 quadrant pressed", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "6-9 quadrant pressed", Toast.LENGTH_SHORT).show();
                     rotate.animateToFinalPosition(135f);
                     animatePanDown();
                     animateZoomIn();
                     clockExpanded = true;
                 } else if (zoomAnimEnded.get()) {
-                    Toast.makeText(getApplicationContext(), "tapped after expanded", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "tapped after expanded", Toast.LENGTH_SHORT).show();
                     animateZoomOut();
                     animatePanUp();
                     rotate.animateToFinalPosition(0f);
@@ -223,13 +233,13 @@ public class MainActivity extends Activity {
                 springForce.setDampingRatio(1);
                 rotate.setSpring(springForce);
                 if (!clockExpanded && zoomAnimEnded.get()) {
-                    Toast.makeText(getApplicationContext(), "3-6 quadrant pressed", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "3-6 quadrant pressed", Toast.LENGTH_SHORT).show();
                     rotate.animateToFinalPosition(-135f);
                     animatePanDown();
                     animateZoomIn();
                     clockExpanded = true;
                 } else if (zoomAnimEnded.get()) {
-                    Toast.makeText(getApplicationContext(), "tapped after expanded", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "tapped after expanded", Toast.LENGTH_SHORT).show();
                     animateZoomOut();
                     animatePanUp();
                     rotate.animateToFinalPosition(0f);
@@ -287,13 +297,32 @@ public class MainActivity extends Activity {
             newAlarm.setText(alarmTime.toString());
             newAlarm.setTextColor(Color.WHITE);
             newAlarm.setTextSize(20f);
-            newAlarm.setBackground(getDrawable(R.drawable.rounded_rectangle));
             newAlarm.setWidth((int) (145 * scale));
+            newAlarm.setBackground(getDrawable(R.drawable.rounded_rectangle));
             newAlarm.setHeight((int) (100 * scale));
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
             params.setMargins((int) (10 * scale), (int) (10 * scale),
                     (int) (10 * scale), (int) (10 * scale));
             newAlarm.setLayoutParams(params);
+            newAlarm.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlarmTime a = alarmTimeManager.getAlarmViaString((String) newAlarm.getText());
+                    a.setOn(!a.isOn());
+                    if (a.isOn()) {
+                        calendar = Calendar.getInstance();
+                        calendar.set(Calendar.HOUR_OF_DAY, a.getHour());
+                        calendar.set(Calendar.MINUTE, a.getMinute());
+                        calendar.set(Calendar.SECOND,0);
+                        calendar.set(Calendar.MILLISECOND,0);
+                        setAlarm();
+                        newAlarm.setBackground(getDrawable(R.drawable.rounded_rectangle));
+                    } else {
+                        newAlarm.setBackground(getDrawable(R.drawable.rounded_rectangle_gray));
+                    }
+//                    Toast.makeText(getApplicationContext(), "clicked1", Toast.LENGTH_SHORT).show();
+                }
+            });
             displayedAlarms.addView(newAlarm);
         }
     }
@@ -373,9 +402,40 @@ public class MainActivity extends Activity {
         panDownAnimY.animateToFinalPosition(1500f);
     }
 
+    public AlarmTimeManager getAlarmTimeManager() {
+        return alarmTimeManager;
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
+    }
+
+    private void setAlarm() {
+
+        alarmManager = (AlarmManager) getSystemService(getApplicationContext().ALARM_SERVICE);
+
+        Intent intent = new Intent(this,AlarmReceiver.class);
+
+        pendingIntent = PendingIntent.getBroadcast(this, 0,intent,0);
+
+        alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+
+        Toast.makeText(this, "Alarm Set Successfully", Toast.LENGTH_SHORT).show();
+    }
+
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            CharSequence name = "SHAKEAWAKE";
+            String description = "It's time to rise and shine!";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel("SHAKEAWAKE",name,importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+
+        }
     }
 
 }

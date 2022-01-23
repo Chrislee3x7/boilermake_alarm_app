@@ -76,7 +76,7 @@ public class NumberPickerFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 AlarmTime alarmTime = new AlarmTime(timePicker.getHour(), timePicker.getMinute(), false);
-                AlarmTimeManager alarmTimeManager = new AlarmTimeManager(getActivity().getApplicationContext());
+                AlarmTimeManager alarmTimeManager = ((MainActivity) getActivity()).getAlarmTimeManager();
                 alarmTimeManager.addAlarmTime(alarmTime);
                 getActivity().getFragmentManager().popBackStack();
             }
