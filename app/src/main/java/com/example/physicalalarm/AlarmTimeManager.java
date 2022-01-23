@@ -153,6 +153,25 @@ public class AlarmTimeManager {
     }
 
     /**
+     *
+     * @param str follows HH:MM AM/PM
+     */
+    public AlarmTime getAlarmViaString(String str){
+        String[] data1 = str.split(":");
+        String[] data2 = data1[1].split(" ");
+
+        if(data1[0].equals("12") && data2[1].equals("AM")) data1[0] = "0";
+        int offset = 0;
+        if(data1[1].equals("PM")) offset = 12;
+        for(AlarmTime a : alarmTimes){
+            if(a.getHour()==Integer.parseInt(data1[0]) + offset && a.getMinute()==Integer.parseInt(data2[0])){
+                return a;
+            }
+        }
+        return null;
+    }
+
+    /**
      * This method will go through the AlarmTime ArrayList and write all the data into the
      * alarmtimes.txt file
      *
