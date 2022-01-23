@@ -7,6 +7,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +24,9 @@ public class alarm_screen extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private Button powerButton;
+    private AlarmTime editingAlarmTime;
 
     public alarm_screen() {
         // Required empty public constructor
@@ -55,10 +59,21 @@ public class alarm_screen extends Fragment {
         }
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_alarm_screen, container, false);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_number_picker, container, false);
+        powerButton = root.findViewById(R.id.powerbutton);
+        editingAlarmTime = MainActivity.selectedTime;
+        powerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        return root;
     }
 }

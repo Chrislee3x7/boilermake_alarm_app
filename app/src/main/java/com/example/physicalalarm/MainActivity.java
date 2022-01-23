@@ -33,7 +33,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.physicalalarm.databinding.ActivityMainBinding;
+//import com.example.physicalalarm.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -64,11 +64,13 @@ public class MainActivity extends Activity {
 
     private ImageButton goToScreen;
 
-    private ActivityMainBinding binding;
+    //private ActivityMainBinding binding;
     private AlarmTimeManager alarmTimeManager;
     private AlarmManager alarmManager;
     private PendingIntent pendingIntent;
     private Calendar calendar;
+
+    public static AlarmTime selectedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -332,6 +334,20 @@ public class MainActivity extends Activity {
 //                    Toast.makeText(getApplicationContext(), "clicked1", Toast.LENGTH_SHORT).show();
                 }
             });
+            newAlarm.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view){
+                    AlarmTime a = alarmTimeManager.getAlarmViaString((String) newAlarm.getText());
+                    setSelectedTime(a);
+                    Fragment selectedFragment = new alarm_screen();
+                    fragmentManager = getFragmentManager();
+                    fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.add(R.id.main, selectedFragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                    return true;
+                }
+            });
             displayedAlarms.addView(newAlarm);
         }
     }
@@ -362,6 +378,11 @@ public class MainActivity extends Activity {
             float angle = (((hour%12)*60+minute)/720 * 360) % 360 - 90;
             iv.setRotation(angle);
         }
+    public static AlarmTime getSelectedTime(){
+        return selectedTime;
+    }
+    public static void setSelectedTime(AlarmTime alarmTime) {
+        selectedTime = alarmTime;
     }
 
     //Changing fragments (might want to delete later)
