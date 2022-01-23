@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
     private View clockFace;
     private View clockTicksAndNumbers;
     private AtomicBoolean zoomAnimEnded;
+    private boolean clockExpanded;
 
     float y1 = 0;
     float y2 = 0;
@@ -39,7 +40,8 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        zoomAnimEnded = new AtomicBoolean(false);
+        zoomAnimEnded = new AtomicBoolean(true);
+        clockExpanded = false;
         clockFace = findViewById(R.id.clock_face);
         clockTicksAndNumbers = findViewById(R.id.clock_ticks_numbers);
 
@@ -56,7 +58,7 @@ public class MainActivity extends Activity {
                         float deltaY = y1 - y2;
                         if (deltaY > MIN_DISTANCE)
                         {
-                            Toast.makeText(getApplicationContext(), "swipe up", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getApplicationContext(), "swipe up", Toast.LENGTH_SHORT).show();
                         }
                         else
                         {
@@ -105,76 +107,102 @@ public class MainActivity extends Activity {
             }
         });
 
-        topLeftWedge.setOnTouchListener(new View.OnTouchListener() {
+        topLeftWedge.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_UP:
-
+            public void onClick(View v) {
+                final SpringAnimation rotate = new SpringAnimation(clockFace,
+                        DynamicAnimation.ROTATION);
+                SpringForce springForce = new SpringForce();
+                springForce.setStiffness(100f);
+                springForce.setDampingRatio(1);
+                rotate.setSpring(springForce);
+                if (!clockExpanded && zoomAnimEnded.get()) {
+                    Toast.makeText(getApplicationContext(), "9-12 quadrant pressed", Toast.LENGTH_SHORT).show();
+                    rotate.animateToFinalPosition(45f);
+                    animatePanDown();
+                    animateZoomIn();
+                    clockExpanded = true;
+                } else if (zoomAnimEnded.get()) {
+                    Toast.makeText(getApplicationContext(), "tapped after expanded", Toast.LENGTH_SHORT).show();
+                    animateZoomOut();
+                    animatePanUp();
+                    rotate.animateToFinalPosition(0f);
+                    clockExpanded = false;
                 }
-                return false;
             }
         });
-
-//        topLeftWedge.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                zoomAnimEnded.set(false);
-//                final SpringAnimation rotate = new SpringAnimation(clockFace,
-//                        DynamicAnimation.ROTATION);
-//                SpringForce springForce = new SpringForce();
-//                springForce.setStiffness(100f);
-//                springForce.setDampingRatio(1);
-//                rotate.setSpring(springForce);
-//                rotate.addEndListener(new DynamicAnimation.OnAnimationEndListener() {
-//                    @Override
-//                    public void onAnimationEnd(DynamicAnimation animation, boolean canceled, float value, float velocity) {
-//                        animatePanDown();
-//                        animateZoomIn();
-//                    }
-//                });
-//                rotate.animateToFinalPosition(45f);
-//                Toast.makeText(getApplicationContext(), "9-12 quadrant pressed", Toast.LENGTH_SHORT).show();
-//            }
-//        });
         topRightWedge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(getApplicationContext(), "12-3 quadrant pressed", Toast.LENGTH_SHORT).show();
+                final SpringAnimation rotate = new SpringAnimation(clockFace,
+                        DynamicAnimation.ROTATION);
+                SpringForce springForce = new SpringForce();
+                springForce.setStiffness(100f);
+                springForce.setDampingRatio(1);
+                rotate.setSpring(springForce);
+                if (!clockExpanded && zoomAnimEnded.get()) {
+                    Toast.makeText(getApplicationContext(), "12-3 quadrant pressed", Toast.LENGTH_SHORT).show();
+                    rotate.animateToFinalPosition(-45f);
+                    animatePanDown();
+                    animateZoomIn();
+                    clockExpanded = true;
+                } else if (zoomAnimEnded.get()) {
+                    Toast.makeText(getApplicationContext(), "tapped after expanded", Toast.LENGTH_SHORT).show();
+                    animateZoomOut();
+                    animatePanUp();
+                    rotate.animateToFinalPosition(0f);
+                    clockExpanded = false;
+                }
             }
         });
         bottomLeftWedge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(getApplicationContext(), "6-9 quadrant pressed", Toast.LENGTH_SHORT).show();
+                final SpringAnimation rotate = new SpringAnimation(clockFace,
+                        DynamicAnimation.ROTATION);
+                SpringForce springForce = new SpringForce();
+                springForce.setStiffness(100f);
+                springForce.setDampingRatio(1);
+                rotate.setSpring(springForce);
+                if (!clockExpanded && zoomAnimEnded.get()) {
+                    Toast.makeText(getApplicationContext(), "6-9 quadrant pressed", Toast.LENGTH_SHORT).show();
+                    rotate.animateToFinalPosition(135f);
+                    animatePanDown();
+                    animateZoomIn();
+                    clockExpanded = true;
+                } else if (zoomAnimEnded.get()) {
+                    Toast.makeText(getApplicationContext(), "tapped after expanded", Toast.LENGTH_SHORT).show();
+                    animateZoomOut();
+                    animatePanUp();
+                    rotate.animateToFinalPosition(0f);
+                    clockExpanded = false;
+                }
             }
         });
         bottomRightWedge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(getApplicationContext(), "3-6 quadrant pressed", Toast.LENGTH_SHORT).show();
+                final SpringAnimation rotate = new SpringAnimation(clockFace,
+                        DynamicAnimation.ROTATION);
+                SpringForce springForce = new SpringForce();
+                springForce.setStiffness(100f);
+                springForce.setDampingRatio(1);
+                rotate.setSpring(springForce);
+                if (!clockExpanded && zoomAnimEnded.get()) {
+                    Toast.makeText(getApplicationContext(), "3-6 quadrant pressed", Toast.LENGTH_SHORT).show();
+                    rotate.animateToFinalPosition(-135f);
+                    animatePanDown();
+                    animateZoomIn();
+                    clockExpanded = true;
+                } else if (zoomAnimEnded.get()) {
+                    Toast.makeText(getApplicationContext(), "tapped after expanded", Toast.LENGTH_SHORT).show();
+                    animateZoomOut();
+                    animatePanUp();
+                    rotate.animateToFinalPosition(0f);
+                    clockExpanded = false;
+                }
             }
         });
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        final int MIN_DISTANCE = 200;
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                y1 = event.getY();
-                break;
-            case MotionEvent.ACTION_UP:
-                y2 = event.getY();
-                float deltaY = y1 - y2;
-                if (deltaY > MIN_DISTANCE) {
-                    Toast.makeText(getApplicationContext(), "swipe up", Toast.LENGTH_SHORT).show();
-                } else {
-                    // consider as something else - a screen tap for example
-                }
-                break;
-        }
-        return super.onTouchEvent(event);
     }
 
     //Changing fragments (might want to delete later)
@@ -187,7 +215,26 @@ public class MainActivity extends Activity {
         fragmentTransaction.commit();
     }
 
+    private void animateZoomOut() {
+        zoomAnimEnded.set(false);
+        clockTicksAndNumbers.setVisibility(View.VISIBLE);
+        final SpringAnimation zoomToTopAnimX = new SpringAnimation(clockFace, DynamicAnimation.SCALE_X);
+        final SpringAnimation zoomToTopAnimY = new SpringAnimation(clockFace, DynamicAnimation.SCALE_Y);
+        SpringForce springForce = new SpringForce();
+        springForce.setStiffness(0.1f);
+        springForce.setDampingRatio(0.9f);
+        zoomToTopAnimX.addEndListener(new DynamicAnimation.OnAnimationEndListener() {
+            @Override
+            public void onAnimationEnd(DynamicAnimation animation, boolean canceled, float value, float velocity) {
+                zoomAnimEnded.set(true);
+            }
+        });
+        zoomToTopAnimY.animateToFinalPosition(1f);
+        zoomToTopAnimX.animateToFinalPosition(1f);
+    }
+
     private void animateZoomIn() {
+        zoomAnimEnded.set(false);
         clockTicksAndNumbers.setVisibility(View.GONE);
         final SpringAnimation zoomToTopAnimX = new SpringAnimation(clockFace, DynamicAnimation.SCALE_X);
         final SpringAnimation zoomToTopAnimY = new SpringAnimation(clockFace, DynamicAnimation.SCALE_Y);
@@ -202,6 +249,15 @@ public class MainActivity extends Activity {
         });
         zoomToTopAnimY.animateToFinalPosition(4f);
         zoomToTopAnimX.animateToFinalPosition(4f);
+    }
+
+    private void animatePanUp() {
+        final SpringAnimation panDownAnimY  = new SpringAnimation(clockFace, DynamicAnimation.TRANSLATION_Y);
+        SpringForce springForce = new SpringForce();
+        springForce.setStiffness(25f);
+        springForce.setDampingRatio(1);
+        panDownAnimY.setSpring(springForce);
+        panDownAnimY.animateToFinalPosition(0f);
     }
 
     private void animatePanDown() {
