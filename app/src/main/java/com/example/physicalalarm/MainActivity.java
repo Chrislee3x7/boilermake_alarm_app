@@ -83,7 +83,7 @@ public class MainActivity extends Activity {
         addAlarmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
             }
         });
         ImageView topLeftWedge = findViewById(R.id.top_left_wedge);
@@ -93,12 +93,12 @@ public class MainActivity extends Activity {
 
         //goToScreen = findViewById(R.id.button1);
 
-        goToScreen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                handleChangeFragment(view);
-            }
-        });
+//        goToScreen.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                handleChangeFragment(view);
+//            }
+//        });
 
         topLeftWedge.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -237,8 +237,8 @@ public class MainActivity extends Activity {
         final SpringAnimation zoomToTopAnimX = new SpringAnimation(clockFace, DynamicAnimation.SCALE_X);
         final SpringAnimation zoomToTopAnimY = new SpringAnimation(clockFace, DynamicAnimation.SCALE_Y);
         SpringForce springForce = new SpringForce();
-        springForce.setStiffness(0.1f);
-        springForce.setDampingRatio(0.9f);
+        springForce.setStiffness(2f);
+        springForce.setDampingRatio(1f);
         zoomToTopAnimX.addEndListener(new DynamicAnimation.OnAnimationEndListener() {
             @Override
             public void onAnimationEnd(DynamicAnimation animation, boolean canceled, float value, float velocity) {
@@ -255,8 +255,8 @@ public class MainActivity extends Activity {
         final SpringAnimation zoomToTopAnimX = new SpringAnimation(clockFace, DynamicAnimation.SCALE_X);
         final SpringAnimation zoomToTopAnimY = new SpringAnimation(clockFace, DynamicAnimation.SCALE_Y);
         SpringForce springForce = new SpringForce();
-        springForce.setStiffness(0.1f);
-        springForce.setDampingRatio(0.9f);
+        springForce.setStiffness(2f);
+        springForce.setDampingRatio(1f);
         zoomToTopAnimX.addEndListener(new DynamicAnimation.OnAnimationEndListener() {
             @Override
             public void onAnimationEnd(DynamicAnimation animation, boolean canceled, float value, float velocity) {
