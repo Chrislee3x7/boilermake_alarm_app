@@ -8,6 +8,8 @@ import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -31,6 +33,7 @@ public class alarm_screen extends Fragment {
     private AlarmTime editingAlarmTime;
     private ImageView powerButtonImageOn;
     private ImageView powerButtonImageOff;
+    private ImageView circle;
 
     public alarm_screen() {
         // Required empty public constructor
@@ -76,14 +79,22 @@ public class alarm_screen extends Fragment {
         powerButton = root.findViewById(R.id.powerbutton);
         powerButtonImageOn = root.findViewById(R.id.power2);
         powerButtonImageOff = root.findViewById(R.id.power1);
+        circle = root.findViewById(R.id.circle);
+        Animation aniRotateClk = AnimationUtils.loadAnimation(getActivity().getApplicationContext(),R.anim.rotate_anticlockwise);
+
         editingAlarmTime = MainActivity.selectedTime;
         if(editingAlarmTime.isOn() == true){
             powerButtonImageOn.setVisibility(View.VISIBLE);
             powerButtonImageOff.setVisibility(View.GONE);
+
+            circle.startAnimation(aniRotateClk);
+            aniRotateClk.setRepeatCount(Animation.INFINITE);
         } else {
             powerButtonImageOn.setVisibility(View.GONE);
             powerButtonImageOff.setVisibility(View.VISIBLE);
+            aniRotateClk.cancel();
         }
+
         powerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,9 +102,13 @@ public class alarm_screen extends Fragment {
                 if(editingAlarmTime.isOn() == true){
                     powerButtonImageOn.setVisibility(View.VISIBLE);
                     powerButtonImageOff.setVisibility(View.GONE);
+
+                    circle.startAnimation(aniRotateClk);
+                    aniRotateClk.setRepeatCount(Animation.INFINITE);
                 } else {
                     powerButtonImageOn.setVisibility(View.GONE);
                     powerButtonImageOff.setVisibility(View.VISIBLE);
+                    aniRotateClk.cancel();
                 }
             }
         });
