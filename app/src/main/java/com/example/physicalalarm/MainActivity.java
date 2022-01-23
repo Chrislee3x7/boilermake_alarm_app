@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -31,6 +32,8 @@ public class MainActivity extends Activity {
     //Fragment vars
     private FragmentTransaction fragmentTransaction;
     private FragmentManager fragmentManager;
+
+    private Button goToScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +96,14 @@ public class MainActivity extends Activity {
 //                return true;
 //            }
 //        });
+        goToScreen = findViewById(R.id.button1);
+
+        goToScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleChangeFragment(view);
+            }
+        });
 
         topLeftWedge.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -168,13 +179,12 @@ public class MainActivity extends Activity {
 
     //Changing fragments (might want to delete later)
     public void handleChangeFragment(View view) {
-        if(view == findViewById(R.id.button1)) {
-            Fragment selectedFragment = new RingingScreenFragment();
-            fragmentManager = getFragmentManager();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment, selectedFragment);
-            fragmentTransaction.commit();
-        }
+        Fragment selectedFragment = new RingingScreenFragment();
+        fragmentManager = getFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.main, selectedFragment);
+        goToScreen.setVisibility(View.GONE);
+        fragmentTransaction.commit();
     }
 
     private void animateZoomIn() {
