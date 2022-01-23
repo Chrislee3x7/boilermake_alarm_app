@@ -1,5 +1,7 @@
 package com.example.physicalalarm;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.dynamicanimation.animation.DynamicAnimation;
 import androidx.dynamicanimation.animation.SpringAnimation;
 import androidx.dynamicanimation.animation.SpringForce;
@@ -248,6 +250,8 @@ public class MainActivity extends Activity {
             }
         });
 
+        loadInAlarmIndicators();
+
         final SpringAnimation rotateHourHand = new SpringAnimation(hourHand,
                 DynamicAnimation.ROTATION);
         final SpringAnimation rotateMinuteHand = new SpringAnimation(minuteHand,
@@ -298,7 +302,12 @@ public class MainActivity extends Activity {
             newAlarm.setTextColor(Color.WHITE);
             newAlarm.setTextSize(20f);
             newAlarm.setWidth((int) (145 * scale));
-            newAlarm.setBackground(getDrawable(R.drawable.rounded_rectangle));
+            if(alarmTime.isOn()){
+                newAlarm.setBackground(getDrawable(R.drawable.rounded_rectangle_gray));
+            }
+            else{
+                newAlarm.setBackground(getDrawable(R.drawable.rounded_rectangle));
+            }
             newAlarm.setHeight((int) (100 * scale));
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
             params.setMargins((int) (10 * scale), (int) (10 * scale),
@@ -316,14 +325,42 @@ public class MainActivity extends Activity {
                         calendar.set(Calendar.SECOND,0);
                         calendar.set(Calendar.MILLISECOND,0);
                         setAlarm();
-                        newAlarm.setBackground(getDrawable(R.drawable.rounded_rectangle));
-                    } else {
                         newAlarm.setBackground(getDrawable(R.drawable.rounded_rectangle_gray));
+                    } else {
+                        newAlarm.setBackground(getDrawable(R.drawable.rounded_rectangle));
                     }
 //                    Toast.makeText(getApplicationContext(), "clicked1", Toast.LENGTH_SHORT).show();
                 }
             });
             displayedAlarms.addView(newAlarm);
+        }
+    }
+
+    private void loadInAlarmIndicators(){
+        ArrayList<AlarmTime> alarmTimes = alarmTimeManager.getAlarmTimes();
+
+
+        int index = 0;
+        for(AlarmTime a : alarmTimes){
+
+            ConstraintLayout parentLayout = (ConstraintLayout) findViewById(R.id.clock_parts);
+            ConstraintSet set = new ConstraintSet();
+
+            ImageView iv = new ImageView(getApplicationContext());
+            iv.setBackground(getDrawable(R.drawable.ic_alarmtimeindicator));
+            iv.setId(View.generateViewId());
+            parentLayout.addView(iv, index);
+            index++;
+
+            set.clone(parentLayout);
+            set.connect(iv.getId(), ConstraintSet.TOP, parentLayout.getId(), ConstraintSet.TOP, 0);
+            set.applyTo(parentLayout);
+
+            float hour = a.getHour();
+            float minute = a.getMinute();
+
+            float angle = (((hour%12)*60+minute)/720 * 360) % 360 - 90;
+            iv.setRotation(angle);
         }
     }
 
