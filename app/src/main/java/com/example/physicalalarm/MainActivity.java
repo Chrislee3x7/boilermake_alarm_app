@@ -15,6 +15,7 @@ import android.app.FragmentTransaction;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.Ringtone;
@@ -81,7 +82,7 @@ public class MainActivity extends Activity {
         //Intent intent = getIntent();
         //Ringtone r = (Ringtone) intent.getSerializableExtra("Ringing");
         if (SoundPlayer.isPlaying) {
-            Toast.makeText(getApplicationContext(), "Ringing intent found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Ringing found", Toast.LENGTH_SHORT).show();
             Fragment selectedFragment = new RingingScreenFragment();
             fragmentManager = getFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
@@ -263,6 +264,7 @@ public class MainActivity extends Activity {
                 DynamicAnimation.ROTATION);
 
         final Handler someHandler = new Handler(getMainLooper());
+        final boolean[] notShaken = {true};
         someHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -275,6 +277,16 @@ public class MainActivity extends Activity {
 
                 rotateHourHand.animateToFinalPosition(hourAngle);
                 rotateMinuteHand.animateToFinalPosition(minuteAngle);
+
+                if(notShaken[0] && SoundPlayer.isPlaying){
+                    Toast.makeText(getApplicationContext(), "Ringing found", Toast.LENGTH_SHORT).show();
+                    Fragment selectedFragment = new RingingScreenFragment();
+                    fragmentManager = getFragmentManager();
+                    fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.add(R.id.main, selectedFragment);
+                    fragmentTransaction.commit();
+                    notShaken[0] = false;
+                }
 
                 someHandler.postDelayed(this, 1000);
             }
@@ -323,6 +335,7 @@ public class MainActivity extends Activity {
                 public void onClick(View v) {
                     AlarmTime a = alarmTimeManager.getAlarmViaString((String) newAlarm.getText());
                     a.setOn(!a.isOn());
+                    alarmTimeManager.updateAlarmTimesFile();
                     if (a.isOn()) {
                         calendar = Calendar.getInstance();
                         calendar.set(Calendar.HOUR_OF_DAY, a.getHour());
@@ -333,6 +346,7 @@ public class MainActivity extends Activity {
                         newAlarm.setBackground(getDrawable(R.drawable.rounded_rectangle_gray));
                     } else {
                         newAlarm.setBackground(getDrawable(R.drawable.rounded_rectangle));
+                        cancelAlarm();
                     }
 //                    Toast.makeText(getApplicationContext(), "clicked1", Toast.LENGTH_SHORT).show();
                 }
@@ -463,6 +477,23 @@ public class MainActivity extends Activity {
     protected void onStart() {
         super.onStart();
     }
+
+    private void cancelAlarm() {
+
+        Intent intent = new Intent(this,AlarmReceiver.class);
+
+        pendingIntent = PendingIntent.getBroadcast(this,0,intent,0);
+
+        if (alarmManager == null){
+
+            alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        }
+
+        alarmManager.cancel(pendingIntent);
+        Toast.makeText(this, "Alarm Cancelled", Toast.LENGTH_SHORT).show();
+    }
+
 
     private void setAlarm() {
 

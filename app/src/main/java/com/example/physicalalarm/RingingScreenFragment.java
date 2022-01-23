@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -30,6 +31,8 @@ public class RingingScreenFragment extends Fragment {
     private float xAccel;
     private float yAccel;
     private float zAccel;
+
+    private RingingScreenFragment thisFrag;
 
     private SensorEventListener listener = new SensorEventListener() {
         @Override
@@ -47,30 +50,33 @@ public class RingingScreenFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
+        thisFrag = this;
         sm = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
         Sensor sensor = sm.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
         sm.registerListener(listener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
 
-        double[] accValues = new double[200];
+        double[] accValues = new double[100];
         final int[] indexToBeReplaced = {0};
 
         final Handler someHandler = new Handler(getMainLooper());
+        final boolean[] notShaken = {true};
         someHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 double netAcc = Math.sqrt(xAccel*xAccel + yAccel*yAccel + zAccel*zAccel);
                 accValues[indexToBeReplaced[0]] = netAcc;
-                indexToBeReplaced[0] = (indexToBeReplaced[0] + 1) % 200;
+                indexToBeReplaced[0] = (indexToBeReplaced[0] + 1) % 100;
 
                 double totalAcc = 0;
-                for(int i=0; i<200; i++){
+                for(int i=0; i<100; i++){
                     totalAcc += accValues[i];
                 }
 
-                totalAcc /= 200;
+                totalAcc /= 100;
 
-                if(totalAcc >= 10){
+                if(notShaken[0] && totalAcc >= 10){
+                    Toast.makeText(getActivity().getApplicationContext(), "Good Exercise", Toast.LENGTH_SHORT).show();
+                    notShaken[0] = false;
                     if(SoundPlayer.isPlaying){
                         SoundPlayer.stopSound();
                     }

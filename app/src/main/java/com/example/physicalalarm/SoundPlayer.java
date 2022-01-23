@@ -13,7 +13,7 @@ public class SoundPlayer  {
 
     public static void playSound(Context context) {
         Uri alarmSound = Uri.parse("android.resource://com.example.physicalalarm/" + R.raw.alarm);
-        Ringtone r = RingtoneManager.getRingtone(context, alarmSound);
+        r = RingtoneManager.getRingtone(context, alarmSound);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             r.setLooping(true);
         }
