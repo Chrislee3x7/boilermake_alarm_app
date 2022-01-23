@@ -130,10 +130,15 @@ public class AlarmTimeManager {
     }
 
     /**
-     * This method will remove an AlarmTime object to the ArrayList
+     * This method will add an AlarmTime object to the ArrayList
      * @param a
      */
     public void addAlarmTime(AlarmTime a){
+        for(AlarmTime at : alarmTimes){
+            if(at.getHour()==a.getHour() && at.getMinute()==a.getMinute()){
+                return;
+            }
+        }
         alarmTimes.add(a);
         updateAlarmTimesFile();
     }
