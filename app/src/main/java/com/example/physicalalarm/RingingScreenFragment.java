@@ -63,19 +63,21 @@ public class RingingScreenFragment extends Fragment {
                 indexToBeReplaced[0] = (indexToBeReplaced[0] + 1) % 20;
 
                 int zeroCount = 0;
-                int totalAcc = 0;
+                double totalAcc = 0;
                 for(int i=0; i<20; i++){
                     totalAcc += accValues[i];
                 }
 
                 totalAcc /= 20;
 
-                if(zeroCount <= 5 && totalAcc >= 15){
+                if(zeroCount <= 5 && totalAcc >= 2){
                     System.out.println("Shaken vigorously for 2+ seconds");
                 }
 
+                someHandler.postDelayed(this, 10);
+
             }
-        }, 100);
+        }, 10);
 
 
         return inflater.inflate(R.layout.fragment_ringing_screen, container, false);
